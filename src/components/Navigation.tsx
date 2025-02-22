@@ -16,8 +16,12 @@ const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="text-xl font-semibold text-primary">
-            CVV IEDC
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/IEDC LOGO FINAL.svg" 
+              alt="CVV IEDC Logo" 
+              className="h-8 w-auto"
+            />
           </Link>
           <div className="flex space-x-8">
             {links.map((link) => (
@@ -48,3 +52,4 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
