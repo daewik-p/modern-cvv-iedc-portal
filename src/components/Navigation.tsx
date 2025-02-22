@@ -20,7 +20,8 @@ const Navigation = () => {
             <img 
               src="/IEDC LOGO FINAL.svg" 
               alt="CVV IEDC Logo" 
-              className="h-8 w-auto"
+              className="h-8 w-auto filter hover:brightness-110 transition-all duration-300 ease-in-out"
+              style={{ filter: 'invert(0.5) sepia(1) saturate(1) hue-rotate(220deg)' }}
             />
           </Link>
           <div className="flex space-x-8">
