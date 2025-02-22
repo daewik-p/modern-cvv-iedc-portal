@@ -1,6 +1,5 @@
-
 import { motion } from "framer-motion";
-import { ArrowRight, Users, Target, Lightbulb } from "lucide-react";
+import { ArrowRight, Users, Target, Lightbulb, Instagram, Linkedin, Youtube } from "lucide-react";
 
 const Index = () => {
   return (
@@ -77,6 +76,60 @@ const Index = () => {
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
               </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Social Media Section */}
+      <section className="py-20 bg-gradient-to-b from-white to-primary/5">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-3xl font-bold text-center mb-12"
+          >
+            Connect With Us
+          </motion.h2>
+          <div className="flex justify-center items-center space-x-8">
+            {[
+              {
+                icon: Instagram,
+                label: "Instagram",
+                href: "https://instagram.com/cvv_iedc",
+                color: "hover:text-pink-500",
+              },
+              {
+                icon: Linkedin,
+                label: "LinkedIn",
+                href: "https://linkedin.com/company/cvv-iedc",
+                color: "hover:text-blue-600",
+              },
+              {
+                icon: Youtube,
+                label: "YouTube",
+                href: "https://youtube.com/@cvv_iedc",
+                color: "hover:text-red-600",
+              },
+            ].map((social, index) => (
+              <motion.a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  delay: 0.3 + index * 0.1,
+                  type: "spring",
+                  stiffness: 200,
+                }}
+                className={`p-4 rounded-full bg-white shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 ${social.color} group`}
+              >
+                <social.icon className="w-8 h-8 transition-transform group-hover:scale-110" />
+                <span className="sr-only">{social.label}</span>
+              </motion.a>
             ))}
           </div>
         </div>
