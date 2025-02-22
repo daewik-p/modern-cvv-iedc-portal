@@ -10,6 +10,7 @@ const Navigation = () => {
     { href: "/", label: "About" },
     { href: "/execom", label: "Execom" },
     { href: "/events", label: "Events" },
+    { href: "/gallery", label: "Gallery" },
   ];
 
   return (

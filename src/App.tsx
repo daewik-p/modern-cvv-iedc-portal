@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import Index from "./pages/Index";
 import Execom from "./pages/Execom";
 import Events from "./pages/Events";
+import Gallery from "./pages/Gallery";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/execom" element={<Execom />} />
               <Route path="/events" element={<Events />} />
+              <Route path="/gallery" element={<Gallery />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AnimatePresence>
