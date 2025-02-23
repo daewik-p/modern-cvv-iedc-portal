@@ -1,6 +1,5 @@
 
 import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 // Pre-define navigation links to avoid recreation on each render
@@ -34,20 +33,13 @@ const Navigation = () => {
                 key={link.href}
                 to={link.href}
                 className={cn(
-                  "relative px-1 py-2 text-sm font-medium transition-colors transform-gpu",
+                  "relative px-1 py-2 text-sm font-medium transition-colors",
                   location.pathname === link.href
-                    ? "text-primary"
+                    ? "text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary after:transition-transform after:duration-200"
                     : "text-gray-600 hover:text-primary"
                 )}
               >
                 {link.label}
-                {location.pathname === link.href && (
-                  <motion.div
-                    layoutId="underline"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
-                    transition={{ duration: 0.2 }}
-                  />
-                )}
               </Link>
             ))}
           </div>

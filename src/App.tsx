@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Execom from "./pages/Execom";
 import Events from "./pages/Events";
+import EventDetail from "./pages/EventDetail";
 import Gallery from "./pages/Gallery";
 import NotFound from "./pages/NotFound";
 
@@ -29,6 +30,7 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/execom" element={<Execom />} />
               <Route path="/events" element={<Events />} />
+              <Route path="/events/:eventId" element={<EventDetail />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
