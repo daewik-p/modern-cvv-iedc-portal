@@ -1,8 +1,20 @@
 
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Clock } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-const events = [
+// Event data structure
+interface Event {
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  image: string;
+  category: string;
+}
+
+// Sample event data - replace with actual events
+const upcomingEvents: Event[] = [
   {
     title: "Innovation Workshop",
     date: "March 15, 2024",
@@ -11,8 +23,62 @@ const events = [
     image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81",
     category: "Workshop",
   },
-  // Add more events as needed
 ];
+
+const pastEvents: Event[] = [
+  {
+    title: "Entrepreneurship Summit 2023",
+    date: "December 10, 2023",
+    time: "9:00 AM",
+    location: "Conference Hall",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+    category: "Summit",
+  },
+];
+
+// Reusable event card component
+const EventCard = ({ event }: { event: Event }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    className="group"
+  >
+    <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+      <div className="relative aspect-video overflow-hidden">
+        <img
+          src={event.image}
+          alt={event.title}
+          className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+        />
+        <div className="absolute top-4 right-4">
+          <span className="px-3 py-1 bg-primary text-white text-sm rounded-full">
+            {event.category}
+          </span>
+        </div>
+      </div>
+      <div className="p-6">
+        <h3 className="text-xl font-semibold mb-4">{event.title}</h3>
+        <div className="space-y-2">
+          <div className="flex items-center text-gray-600">
+            <Calendar className="w-4 h-4 mr-2" />
+            <span>{event.date}</span>
+          </div>
+          <div className="flex items-center text-gray-600">
+            <Clock className="w-4 h-4 mr-2" />
+            <span>{event.time}</span>
+          </div>
+          <div className="flex items-center text-gray-600">
+            <MapPin className="w-4 h-4 mr-2" />
+            <span>{event.location}</span>
+          </div>
+        </div>
+        <button className="mt-6 w-full bg-primary text-white py-2 rounded-lg hover:bg-secondary transition-colors">
+          {new Date(event.date) > new Date() ? "Register Now" : "View Details"}
+        </button>
+      </div>
+    </div>
+  </motion.div>
+);
 
 const Events = () => {
   return (
@@ -28,54 +94,31 @@ const Events = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-4xl font-bold text-center mb-12"
         >
-          Upcoming Events
+          Events
         </motion.h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {events.map((event, index) => (
-            <motion.div
-              key={event.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="group"
-            >
-              <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <div className="relative aspect-video overflow-hidden">
-                  <img
-                    src={event.image}
-                    alt={event.title}
-                    className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 bg-primary text-white text-sm rounded-full">
-                      {event.category}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-4">{event.title}</h3>
-                  <div className="space-y-2">
-                    <div className="flex items-center text-gray-600">
-                      <Calendar className="w-4 h-4 mr-2" />
-                      <span>{event.date}</span>
-                    </div>
-                    <div className="flex items-center text-gray-600">
-                      <Clock className="w-4 h-4 mr-2" />
-                      <span>{event.time}</span>
-                    </div>
-                    <div className="flex items-center text-gray-600">
-                      <MapPin className="w-4 h-4 mr-2" />
-                      <span>{event.location}</span>
-                    </div>
-                  </div>
-                  <button className="mt-6 w-full bg-primary text-white py-2 rounded-lg hover:bg-secondary transition-colors">
-                    Register Now
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        
+        <Tabs defaultValue="upcoming" className="w-full">
+          <TabsList className="grid w-full max-w-[400px] grid-cols-2 mx-auto mb-8">
+            <TabsTrigger value="upcoming">Upcoming Events</TabsTrigger>
+            <TabsTrigger value="past">Past Events</TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="upcoming">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {upcomingEvents.map((event) => (
+                <EventCard key={event.title} event={event} />
+              ))}
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="past">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {pastEvents.map((event) => (
+                <EventCard key={event.title} event={event} />
+              ))}
+            </div>
+          </TabsContent>
+        </Tabs>
       </div>
     </motion.div>
   );

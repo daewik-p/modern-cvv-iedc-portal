@@ -6,8 +6,9 @@ import { cn } from "@/lib/utils";
 const Navigation = () => {
   const location = useLocation();
 
+  // Navigation links configuration
   const links = [
-    { href: "/", label: "About" },
+    { href: "/about", label: "About" },
     { href: "/execom", label: "Execom" },
     { href: "/events", label: "Events" },
     { href: "/gallery", label: "Gallery" },
@@ -54,4 +55,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
