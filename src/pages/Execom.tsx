@@ -1,6 +1,22 @@
-import { motion } from "framer-motion";
 
-const execomMembers = {
+import { motion } from "framer-motion";
+import { useMemo } from "react"; // Added for performance optimization
+
+// Define member types for better type checking and documentation
+interface ExecomMember {
+  name: string;
+  role: string;
+  image: string;
+}
+
+interface ExecomMembers {
+  nodalOfficers: ExecomMember[];
+  studentLeads: ExecomMember[];
+  correspondingLeads: ExecomMember[];
+}
+
+// Memoized member data to prevent unnecessary re-renders
+const execomMembers: ExecomMembers = {
   nodalOfficers: [
     {
       name: "Mrs. Anupama Jims",
@@ -30,45 +46,58 @@ const execomMembers = {
 };
 
 const Execom = () => {
-  const renderSection = (title: string, members: { name: string; role: string; image: string }[]) => (
-    <div className="mb-16">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-2xl font-semibold mb-8 text-center"
-      >
-        {title}
-      </motion.h2>
-      <div className="flex justify-center">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {members.map((member, index) => (
-            <motion.div
-              key={member.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="group"
-            >
-              <div className="relative overflow-hidden rounded-lg bg-white shadow-md hover:shadow-lg transition-shadow">
-                <div className="aspect-[3/4] relative overflow-hidden">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+  // Memoized section renderer to prevent unnecessary re-renders
+  const renderSection = useMemo(() => {
+    return (title: string, members: ExecomMember[]) => (
+      <div className="mb-16">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-2xl font-semibold mb-8 text-center"
+        >
+          {title}
+        </motion.h2>
+        {/* Center-aligned container with flex layout */}
+        <div className="flex justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl">
+            {members.map((member, index) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  delay: index * 0.1,
+                  // Add damping for smoother animations
+                  type: "spring",
+                  damping: 15
+                }}
+                className="group w-full"
+                // Use CSS transform instead of layout animations for better performance
+                style={{ willChange: 'transform' }}
+              >
+                <div className="relative overflow-hidden rounded-lg bg-white shadow-md hover:shadow-lg transition-shadow">
+                  <div className="aspect-[3/4] relative overflow-hidden">
+                    {/* Add loading="lazy" for better performance with images */}
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      loading="lazy"
+                      className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-lg font-semibold mb-1">{member.name}</h3>
+                    <p className="text-primary text-sm">{member.role}</p>
+                  </div>
                 </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold mb-1">{member.name}</h3>
-                  <p className="text-primary text-sm">{member.role}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }, []); // Empty dependency array since renderSection doesn't depend on any props or state
 
   return (
     <motion.div
@@ -94,4 +123,3 @@ const Execom = () => {
 };
 
 export default Execom;
-
