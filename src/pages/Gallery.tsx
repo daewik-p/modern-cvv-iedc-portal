@@ -28,11 +28,8 @@ const Gallery = () => {
         </motion.h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {photos.map((photo, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
               className="relative overflow-hidden rounded-lg bg-white shadow-md hover:shadow-lg transition-shadow"
             >
               <img
@@ -40,7 +37,7 @@ const Gallery = () => {
                 alt={photo.alt}
                 className="object-cover w-full h-full transform hover:scale-105 transition-transform duration-300"
               />
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

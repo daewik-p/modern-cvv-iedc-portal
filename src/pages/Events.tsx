@@ -1,8 +1,7 @@
-
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Clock } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Event data structure
 interface Event {
@@ -16,7 +15,7 @@ interface Event {
   description: string;
 }
 
-// Sample event data with more details
+// Sample event data
 const upcomingEvents: Event[] = [
   {
     id: "innovation-workshop-2024",
@@ -26,7 +25,7 @@ const upcomingEvents: Event[] = [
     location: "Main Auditorium",
     image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81",
     category: "Workshop",
-    description: "Join us for an intensive workshop on innovation and entrepreneurship. Learn from industry experts about the latest trends and techniques in innovation.",
+    description: "Join us for an intensive workshop on innovation and entrepreneurship.",
   },
 ];
 
@@ -39,17 +38,18 @@ const pastEvents: Event[] = [
     location: "Conference Hall",
     image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
     category: "Summit",
-    description: "A gathering of entrepreneurs and innovators discussing the future of business and technology.",
+    description: "A gathering of entrepreneurs and innovators discussing the future of business.",
   },
 ];
 
-// Reusable event card component
+// Motion variants for smoother animations
+const fadeInVariant = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
+
 const EventCard = ({ event }: { event: Event }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    className="group"
-  >
+  <div className="group">
     <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
       <div className="relative aspect-video overflow-hidden">
         <img
@@ -65,7 +65,9 @@ const EventCard = ({ event }: { event: Event }) => (
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-semibold mb-4">{event.title}</h3>
+        <h3 className="text-xl font-semibold mb-4">
+          {event.title}
+        </h3>
         <div className="space-y-2 mb-6">
           <div className="flex items-center text-gray-600">
             <Calendar className="w-4 h-4 mr-2" />
@@ -88,33 +90,29 @@ const EventCard = ({ event }: { event: Event }) => (
         </Link>
       </div>
     </div>
-  </motion.div>
+  </div>
 );
 
-// Events list page
 const Events = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="min-h-screen py-16"
-    >
+    <div className="min-h-screen py-16">
       <div className="container mx-auto px-4">
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          variants={fadeInVariant}
+          initial="hidden"
+          whileInView="visible"
+viewport={{ once: true }}
           className="text-4xl font-bold text-center mb-12"
         >
           Events
         </motion.h1>
-        
+
         <Tabs defaultValue="upcoming" className="w-full">
           <TabsList className="grid w-full max-w-[400px] grid-cols-2 mx-auto mb-8">
             <TabsTrigger value="upcoming">Upcoming Events</TabsTrigger>
             <TabsTrigger value="past">Past Events</TabsTrigger>
           </TabsList>
-          
+
           <TabsContent value="upcoming">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {upcomingEvents.map((event) => (
@@ -122,7 +120,7 @@ const Events = () => {
               ))}
             </div>
           </TabsContent>
-          
+
           <TabsContent value="past">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {pastEvents.map((event) => (
@@ -132,7 +130,7 @@ const Events = () => {
           </TabsContent>
         </Tabs>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

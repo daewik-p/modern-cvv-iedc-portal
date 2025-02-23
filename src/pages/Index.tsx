@@ -18,7 +18,7 @@ const Index = () => {
             transition={{ delay: 0.2 }}
             className="text-5xl md:text-6xl font-bold text-gray-900 mb-6"
           >
-            Innovation Starts Here
+            Meet New Dimensions
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -47,22 +47,22 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: Users,
-                title: "Community",
+                icon: Target,
+                title: "Create",
                 description:
-                  "Join a vibrant community of innovators, creators, and entrepreneurs.",
+                  "Turn ideas into reality by exploring new possibilities and building innovative solutions.",
               },
               {
-                icon: Target,
-                title: "Mission",
+                icon: Users,
+                title: "Inspire",
                 description:
-                  "Fostering innovation and entrepreneurship through practical learning.",
+                  "Ignite creativity, share knowledge and push boundaries to shape the future.",
               },
               {
                 icon: Lightbulb,
-                title: "Innovation",
+                title: "Transform",
                 description:
-                  "Transform ideas into reality with our state-of-the-art facilities.",
+                  "Empower change and bring impactful innovations to life through collaboration and technology.",
               },
             ].map((feature, index) => (
               <motion.div
@@ -113,23 +113,16 @@ const Index = () => {
                 color: "hover:text-red-600",
               },
             ].map((social, index) => (
-              <motion.a
+              <a
                 key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{
-                  delay: 0.3 + index * 0.1,
-                  type: "spring",
-                  stiffness: 200,
-                }}
                 className={`p-4 rounded-full bg-white shadow-md hover:shadow-xl transition-all transform hover:-translate-y-1 ${social.color} group`}
               >
                 <social.icon className="w-8 h-8 transition-transform group-hover:scale-110" />
                 <span className="sr-only">{social.label}</span>
-              </motion.a>
+              </a>
             ))}
           </div>
         </div>

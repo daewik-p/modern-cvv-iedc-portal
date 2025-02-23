@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { useMemo } from "react";
 import { Linkedin } from "lucide-react";
@@ -30,34 +29,126 @@ const execomMembers: ExecomMembers = {
   studentLeads: [
     {
       name: "Krishna K",
-      role: "Student Lead I",
+      role: "Chief Innovation Officer",
       image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
-      linkedin: "https://linkedin.com/in/example",
+      linkedin: "https://www.linkedin.com/in/krishnak535",
     },
     {
-      name: "Rosemary",
-      role: "Student Lead II",
+      name: "Rosemary Tomy",
+      role: "Executive Program Lead",
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a",
-      linkedin: "https://linkedin.com/in/example",
+      linkedin: "https://linkedin.com/in/rosemarytomy1212",
     },
+    {
+      name: "Daewik Prasheen",
+      role: "Head of Technology",
+      image: "/execom/daewik.jpg",
+      linkedin: "https://linkedin.com/in/daewik",
+    },  
+    {
+      name: "Gopika V K",
+      role: "Head of Quality & Operations",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a",
+      linkedin: "https://linkedin.com/in/rosemarytomy1212",
+    },
+    {
+      name: "Mathews Varghese",
+      role: "Head of Finance",
+      image: "file",
+      linkedin: "https://www.linkedin.com/in/mathews-varghese"
+    },
+    {
+      name: "Anuja S Nair",
+      role: "Head of Innovation & Development",
+      image: "file",
+      linkedin: "https://www.linkedin.com/in/anuja-s-nair-777315322"
+    },
+    {
+      name: "Niranjana Uday",
+      role: "Head of Startup Incubation",
+      image: "file",
+      linkedin: "https://www.linkedin.com/in/niranjana-uday/"
+    },
+    {
+      name: "Bharathi Devi",
+      role: "Head of Documentation",
+      image: "file",
+      linkedin: "https://www.linkedin.com/in/bharathi47"
+    },
+    {
+      name: "Anjana Prakash",
+      role: "Head of Research & Collaboration",
+      image: "file",
+      linkedin: "https://www.linkedin.com/in/anjanaprakash017"
+    },
+    {
+      name: "Aarcha Praveen",
+      role: "Head of Branding & Marketing",
+      image: "file",
+      linkedin: "http://www.linkedin.com/in/aarchapraveen012"
+    },
+    {
+      name: "Anagha Suresh",
+      role: "Head of Women Entrepreneurship",
+      image: "file",
+      linkedin: "http://www.linkedin.com/in/anaghasuresh04"
+    },
+    {
+      name: "Nayana Anna Biju",
+      role: "Head of Community",
+      image: "file",
+      linkedin: "https://www.linkedin.com/in/nayana-anna-biju-454903255"
+    },
+    {
+      name: "Gowri Gopika",
+      role: "Head of IPR",
+      image: "file",
+      linkedin: "https://www.linkedin.com/in/gowri-gopika-"
+    },
+    {
+      name: "Niranjana Gireesh",
+      role: "Head of Internship & Talent Development",
+      image: "file",
+      linkedin: "https://www.linkedin.com/in/niranjanagireesh0410"
+    },  
   ],
   correspondingLeads: [
     {
-      name: "Daewik Prasheen",
-      role: "Technology Lead",
-      image: "/execom/daewik.jpg",
-      linkedin: "https://linkedin.com/in/example",
+      name: "Nakshathra S Nair",
+      role: "Quality & Operations",
+      image: "file",
+      linkedin: "https://www.linkedin.com/in/nakshathranaksh"
+    },
+    {
+      name: "Sona Monichen",
+      role: "Women Entrepreneurship",
+      image: "file",
+      linkedin: "https://www.linkedin.com/in/sona-monichen-23a830313/"
+    },
+    {
+      name: "Akshara U",
+      role: "Internship & Talent Development",
+      image: "file",
+      linkedin: ""
+    },
+    {
+      name: "Potla Akhil",
+      role: "Branding & Marketing",
+      image: "file",
+      linkedin: "http://www.linkedin.com/in/akhil0719"
+    },
+    {
+      name: "M Rudra Varma",
+      role: "Branding & Marketing",
+      image: "file",
+      linkedin: "https://www.linkedin.com/in/mrudravarmaa"
     },
   ],
 };
 
 // Member card component for better code organization and reusability
 const MemberCard = ({ member }: { member: ExecomMember }) => (
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    className="group w-full transform-gpu"
-  >
+  <div className="group w-full transform-gpu">
     <div className="relative rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
       <div className="aspect-[4/5] relative overflow-hidden">
         <img
@@ -86,7 +177,7 @@ const MemberCard = ({ member }: { member: ExecomMember }) => (
         <p className="text-primary text-sm line-clamp-1">{member.role}</p>
       </div>
     </div>
-  </motion.div>
+  </div>
 );
 
 const Execom = () => {
@@ -94,27 +185,20 @@ const Execom = () => {
   const renderSection = useMemo(() => {
     return (title: string, members: ExecomMember[]) => (
       <section className="mb-12">
-        <motion.h2
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-2xl font-semibold mb-6 text-center"
-        >
+        <h2 className="text-2xl font-semibold mb-6 text-center">
           {title}
-        </motion.h2>
+        </h2>
         <div className="flex justify-center px-4">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 w-full max-w-6xl">
-            {members.map((member, index) => (
-              <motion.div
+            {members.map((member) => (
+              <div
                 key={member.name}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
                 className="flex justify-center"
               >
                 <div className="w-full max-w-[240px]">
                   <MemberCard member={member} />
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -123,12 +207,7 @@ const Execom = () => {
   }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="min-h-screen py-12 mt-16"
-    >
+    <div className="min-h-screen py-12 mt-16">
       <div className="container mx-auto">
         <motion.h1
           initial={{ opacity: 0, y: 10 }}
@@ -141,7 +220,7 @@ const Execom = () => {
         {renderSection("Student Leads", execomMembers.studentLeads)}
         {renderSection("Corresponding Leads", execomMembers.correspondingLeads)}
       </div>
-    </motion.div>
+    </div>
   );
 };
 
