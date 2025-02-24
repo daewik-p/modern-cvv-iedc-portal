@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+
 import { Calendar, MapPin, Clock } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link } from "react-router-dom";
@@ -42,12 +42,6 @@ const pastEvents: Event[] = [
   },
 ];
 
-// Motion variants for smoother animations
-const fadeInVariant = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
-};
-
 const EventCard = ({ event }: { event: Event }) => (
   <div className="group">
     <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -65,9 +59,7 @@ const EventCard = ({ event }: { event: Event }) => (
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-semibold mb-4">
-          {event.title}
-        </h3>
+        <h3 className="text-xl font-semibold mb-4">{event.title}</h3>
         <div className="space-y-2 mb-6">
           <div className="flex items-center text-gray-600">
             <Calendar className="w-4 h-4 mr-2" />
@@ -95,17 +87,11 @@ const EventCard = ({ event }: { event: Event }) => (
 
 const Events = () => {
   return (
-    <div className="min-h-screen py-16">
+    <div className="min-h-screen py-16 fade-in">
       <div className="container mx-auto px-4">
-        <motion.h1
-          variants={fadeInVariant}
-          initial="hidden"
-          whileInView="visible"
-viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-12"
-        >
+        <h1 className="text-4xl font-bold text-center mb-12 slide-in">
           Events
-        </motion.h1>
+        </h1>
 
         <Tabs defaultValue="upcoming" className="w-full">
           <TabsList className="grid w-full max-w-[400px] grid-cols-2 mx-auto mb-8">
