@@ -1,7 +1,33 @@
+
 import { motion } from "framer-motion";
 import { ArrowRight, Users, Target, Lightbulb, Instagram, Linkedin, Youtube } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
+// Hero background images
+const heroImages = [
+  "/hero/hero1.webp",
+  "/hero/hero2.webp",
+  "/hero/hero3.webp"
+];
 
 const Index = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    // Preload images for smooth transitions
+    heroImages.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+
+    const interval = setInterval(() => {
+      setCurrentImageIndex(prev => (prev + 1) % heroImages.length);
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -10,13 +36,21 @@ const Index = () => {
       className="min-h-screen"
     >
       {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center justify-center bg-gradient-to-r from-primary/10 to-secondary/10">
-        <div className="container mx-auto px-4 text-center">
+      <section className="relative h-[80vh] flex items-center justify-center">
+        {/* Background Image Container */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000"
+          style={{
+            backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url(${heroImages[currentImageIndex]})`,
+          }}
+        />
+
+        <div className="container mx-auto px-4 text-center relative z-10">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-5xl md:text-6xl font-bold text-gray-900 mb-6"
+            className="text-5xl md:text-6xl font-bold text-white mb-6"
           >
             Meet New Dimensions
           </motion.h1>
@@ -24,20 +58,24 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto"
+            className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto"
           >
             CVV IEDC is a hub for innovation, entrepreneurship, and technological advancement.
             We nurture ideas that shape the future.
           </motion.p>
-          <motion.button
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="bg-primary text-white px-8 py-3 rounded-full font-medium inline-flex items-center group hover:bg-secondary transition-colors"
           >
-            Join Us
-            <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-          </motion.button>
+            <Link
+              to="/about"
+              className="inline-flex items-center bg-primary text-white px-8 py-3 rounded-full font-medium group hover:bg-secondary transition-colors"
+            >
+              Learn More
+              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
         </div>
       </section>
 
