@@ -2,54 +2,18 @@
 import { Calendar, MapPin, Clock } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link } from "react-router-dom";
+import { type Event, upcomingEvents, pastEvents } from "@/data/events";
 
-// Event data structure
-interface Event {
-  id: string;
-  title: string;
-  date: string;
-  time: string;
-  location: string;
-  image: string;
-  category: string;
-  description: string;
-}
-
-// Sample event data
-const upcomingEvents: Event[] = [
-  {
-    id: "innovation-workshop-2024",
-    title: "Innovation Workshop",
-    date: "March 15, 2024",
-    time: "10:00 AM",
-    location: "Main Auditorium",
-    image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81",
-    category: "Workshop",
-    description: "Join us for an intensive workshop on innovation and entrepreneurship.",
-  },
-];
-
-const pastEvents: Event[] = [
-  {
-    id: "entrepreneurship-summit-2023",
-    title: "Entrepreneurship Summit 2023",
-    date: "December 10, 2023",
-    time: "9:00 AM",
-    location: "Conference Hall",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
-    category: "Summit",
-    description: "A gathering of entrepreneurs and innovators discussing the future of business.",
-  },
-];
-
-const EventCard = ({ event }: { event: Event }) => (
-  <div className="group">
+const EventCard = ({ event }: { event: Event }) => {
+  const isUpcoming = new Date(event.date) > new Date();
+  
+  return (
     <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
       <div className="relative aspect-video overflow-hidden">
         <img
           src={event.image}
           alt={event.title}
-          className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+          className="object-cover w-full h-full transform hover:scale-105 transition-transform duration-300"
           loading="lazy"
         />
         <div className="absolute top-4 right-4">
@@ -75,13 +39,21 @@ const EventCard = ({ event }: { event: Event }) => (
           </div>
         </div>
         <Link
-          to={`/events/${event.id}`}
+          to={isUpcoming ? `/register/${event.id}` : `/events/${event.id}`}
           className="block w-full bg-primary text-white text-center py-2 rounded-lg hover:bg-secondary transition-colors duration-300"
         >
-          {new Date(event.date) > new Date() ? "Register Now" : "View Details"}
+          {isUpcoming ? "Register Now" : "View Details"}
         </Link>
       </div>
     </div>
+  );
+};
+
+const EventGrid = ({ events }: { events: Event[] }) => (
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {events.map((event) => (
+      <EventCard key={event.id} event={event} />
+    ))}
   </div>
 );
 
@@ -89,7 +61,7 @@ const Events = () => {
   return (
     <div className="min-h-screen py-16 fade-in">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center mb-12 slide-in">
+        <h1 className="text-4xl font-bold text-center mb-12">
           Events
         </h1>
 
@@ -99,20 +71,12 @@ const Events = () => {
             <TabsTrigger value="past">Past Events</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="upcoming">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {upcomingEvents.map((event) => (
-                <EventCard key={event.id} event={event} />
-              ))}
-            </div>
+          <TabsContent value="upcoming" className="outline-none">
+            <EventGrid events={upcomingEvents} />
           </TabsContent>
 
-          <TabsContent value="past">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {pastEvents.map((event) => (
-                <EventCard key={event.id} event={event} />
-              ))}
-            </div>
+          <TabsContent value="past" className="outline-none">
+            <EventGrid events={pastEvents} />
           </TabsContent>
         </Tabs>
       </div>
