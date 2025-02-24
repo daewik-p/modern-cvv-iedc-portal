@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Clock } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -66,7 +65,9 @@ const EventCard = ({ event }: { event: Event }) => (
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-semibold mb-4">{event.title}</h3>
+        <h3 className="text-xl font-semibold mb-4">
+          {event.title}
+        </h3>
         <div className="space-y-2 mb-6">
           <div className="flex items-center text-gray-600">
             <Calendar className="w-4 h-4 mr-2" />
@@ -100,7 +101,7 @@ const Events = () => {
           variants={fadeInVariant}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+viewport={{ once: true }}
           className="text-4xl font-bold text-center mb-12"
         >
           Events
