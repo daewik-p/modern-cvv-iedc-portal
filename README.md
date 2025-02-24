@@ -1,69 +1,74 @@
-# Welcome to your Lovable project
 
-## Project info
+# CVV IEDC Website
 
-**URL**: https://lovable.dev/projects/8021437a-6282-4ad5-8f39-3ffc2a18f528
+## Project Structure
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/8021437a-6282-4ad5-8f39-3ffc2a18f528) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+src/
+├── components/        # Reusable UI components
+│   ├── ui/           # shadcn/ui components
+│   └── shared/       # Shared components across pages
+├── data/             # Static data and content
+│   ├── events.ts     # Event listings
+│   └── execom.ts     # Team member data
+├── pages/            # Page components
+├── styles/           # Global styles and CSS
+└── utils/            # Utility functions and helpers
 ```
 
-**Edit a file directly in GitHub**
+## Adding New Content
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Adding Events
+1. Navigate to `src/data/events.ts`
+2. Add new event to either `upcomingEvents` or `pastEvents` array
+3. Follow the Event interface structure:
+```typescript
+{
+  id: string;           // Unique identifier
+  title: string;        // Event title
+  date: string;         // Event date
+  time: string;         // Event time
+  location: string;     // Event location
+  image: string;        // Image path/URL
+  category: string;     // Event category
+  description: string;  // Event description
+}
+```
 
-**Use GitHub Codespaces**
+### Adding Team Members
+1. Navigate to `src/data/execom.ts`
+2. Add new member to appropriate section
+3. Follow the ExecomMember interface:
+```typescript
+{
+  name: string;     // Member name
+  role: string;     // Role/position
+  image: string;    // Image path/URL
+  linkedin?: string; // LinkedIn profile (optional)
+}
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Adding Hero Images
+1. Place new images in `/public/hero/` directory
+2. Use .webp format for better performance
+3. Update `heroImages` array in `src/pages/Index.tsx`
 
-## What technologies are used for this project?
+## Performance Guidelines
+- Use .webp format for images
+- Keep image sizes under 200KB
+- Lazy load images when possible
+- Use CSS animations instead of JavaScript animations
+- Minimize third-party dependencies
+- Use code splitting for larger pages
 
-This project is built with .
+## Development Setup
+```bash
+# Install dependencies
+npm install
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# Start development server
+npm run dev
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/8021437a-6282-4ad5-8f39-3ffc2a18f528) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+# Build for production
+npm run build
+```

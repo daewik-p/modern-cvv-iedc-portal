@@ -4,7 +4,7 @@ import { ArrowRight, Users, Target, Lightbulb, Instagram, Linkedin, Youtube } fr
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-// Hero background images
+// Hero background images - Add new images to /public/hero/ directory
 const heroImages = [
   "/hero/hero1.webp",
   "/hero/hero2.webp",
@@ -12,6 +12,7 @@ const heroImages = [
 ];
 
 const Index = () => {
+  // State for current hero image index
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -21,23 +22,30 @@ const Index = () => {
       img.src = src;
     });
 
+    // Rotate images every 5 seconds
     const interval = setInterval(() => {
       setCurrentImageIndex(prev => (prev + 1) % heroImages.length);
-    }, 5000); // Change image every 5 seconds
+    }, 5000);
 
+    // Cleanup interval on component unmount
     return () => clearInterval(interval);
   }, []);
 
+  // Simple fade-in animation for main content
+  const fadeInAnimation = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 },
+  };
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
+      {...fadeInAnimation}
       className="min-h-screen"
     >
-      {/* Hero Section */}
+      {/* Hero Section with rotating background */}
       <section className="relative h-[80vh] flex items-center justify-center">
-        {/* Background Image Container */}
+        {/* Background Image with overlay */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000"
           style={{
@@ -45,6 +53,7 @@ const Index = () => {
           }}
         />
 
+        {/* Hero Content */}
         <div className="container mx-auto px-4 text-center relative z-10">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
