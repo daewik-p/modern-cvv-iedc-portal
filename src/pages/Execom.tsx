@@ -35,7 +35,7 @@ const MemberCard = memo(({ member, index }: { member: ExecomMember; index: numbe
             height="300"
             className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
             decoding="async"
-            fetchpriority={index < 3 ? "high" : "auto"} // Prioritize first 3 images
+            fetchPriority={index < 3 ? "high" : "auto"} // Corrected casing: fetchPriority instead of fetchpriority
           />
           {member.linkedin && (
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center pb-4">
