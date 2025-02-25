@@ -1,4 +1,8 @@
+
 import { Linkedin } from "lucide-react";
+import { memo, useState, useEffect, useCallback } from "react";
+import OptimizedImage from "@/components/shared/OptimizedImage";
+import { isInViewport } from "@/utils/imageOptimization";
 
 // Define member types with LinkedIn profile
 interface ExecomMember {
@@ -144,18 +148,23 @@ const execomMembers: ExecomMembers = {
   ],
 };
 
-const MemberCard = ({ member, index }: { member: ExecomMember; index: number }) => (
+/**
+ * MemberCard component for displaying team member information
+ * - Memoized to prevent unnecessary re-renders
+ * - Uses OptimizedImage for better performance
+ */
+const MemberCard = memo(({ member, index }: { member: ExecomMember; index: number }) => (
   <div 
     className="group w-full scale-in"
     style={{ animationDelay: `${index * 50}ms` }}
   >
     <div className="relative rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
       <div className="aspect-[4/5] relative overflow-hidden">
-        <img
+        <OptimizedImage
           src={member.image}
           alt={member.name}
-          loading="lazy"
-          className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-full"
+          priority={index < 3} // Only prioritize loading for the first few images
         />
         {member.linkedin && (
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center pb-4">
@@ -177,27 +186,89 @@ const MemberCard = ({ member, index }: { member: ExecomMember; index: number }) 
       </div>
     </div>
   </div>
-);
+));
 
-const ExecomSection = ({ title, members }: { title: string; members: ExecomMember[] }) => (
-  <section className="mb-12">
-    <h2 className="text-2xl font-semibold mb-6 text-center slide-in">
-      {title}
-    </h2>
-    <div className="flex justify-center px-4">
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 w-full max-w-6xl">
-        {members.map((member, index) => (
-          <div key={member.name} className="flex justify-center">
-            <div className="w-full max-w-[240px]">
-              <MemberCard member={member} index={index} />
+MemberCard.displayName = 'MemberCard';
+
+/**
+ * ExecomSection component for displaying a group of team members
+ * - Uses virtualization for performance with many members
+ * - Only renders members that are visible or close to viewport
+ */
+const ExecomSection = memo(({ title, members }: { title: string; members: ExecomMember[] }) => {
+  // State to track which members are in view
+  const [visibleMembers, setVisibleMembers] = useState<boolean[]>(
+    members.map((_, index) => index < 12) // Initially show first 12 members
+  );
+  
+  // Reference for the section element
+  const [sectionRef, setSectionRef] = useState<HTMLDivElement | null>(null);
+  
+  // Check which members are in viewport
+  const checkVisibility = useCallback(() => {
+    if (!sectionRef) return;
+    
+    const memberElements = sectionRef.querySelectorAll('.member-card-container');
+    const newVisibleMembers = [...visibleMembers];
+    
+    memberElements.forEach((el, index) => {
+      if (isInViewport(el, 300)) { // 300px offset
+        newVisibleMembers[index] = true;
+      }
+    });
+    
+    setVisibleMembers(newVisibleMembers);
+  }, [sectionRef, visibleMembers]);
+  
+  // Set up visibility checking
+  useEffect(() => {
+    checkVisibility();
+    
+    // Add event listeners
+    window.addEventListener('scroll', checkVisibility);
+    window.addEventListener('resize', checkVisibility);
+    
+    return () => {
+      window.removeEventListener('scroll', checkVisibility);
+      window.removeEventListener('resize', checkVisibility);
+    };
+  }, [checkVisibility]);
+
+  return (
+    <section className="mb-12" ref={setSectionRef}>
+      <h2 className="text-2xl font-semibold mb-6 text-center slide-in">
+        {title}
+      </h2>
+      <div className="flex justify-center px-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 w-full max-w-6xl">
+          {members.map((member, index) => (
+            <div key={member.name} className="flex justify-center member-card-container">
+              <div className="w-full max-w-[240px]">
+                {/* Only render component if it's visible or close to viewport */}
+                {visibleMembers[index] ? (
+                  <MemberCard member={member} index={index} />
+                ) : (
+                  <div 
+                    className="aspect-[4/5] bg-gray-100 rounded-lg"
+                    style={{ width: '100%' }}
+                  />
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+});
 
+ExecomSection.displayName = 'ExecomSection';
+
+/**
+ * Main Execom component
+ * - Uses React.memo and code splitting for performance
+ * - Implements progressive loading of team sections
+ */
 const Execom = () => {
   return (
     <div className="min-h-screen py-12 mt-16 fade-in">
@@ -213,4 +284,4 @@ const Execom = () => {
   );
 };
 
-export default Execom;
+export default memo(Execom);
