@@ -153,14 +153,31 @@ const ExecomSection = memo(({ title, members }: { title: string; members: Execom
 
 ExecomSection.displayName = 'ExecomSection';
 
+// Define a type for section configuration to make adding new sections easier
+interface ExecomSectionConfig {
+  id: string;
+  title: string;
+  members: ExecomMember[];
+  priority?: 'high' | 'medium' | 'low'; // Controls loading priority
+}
+
 /**
  * Main Execom Component
- * - Uses destructured data to avoid reference issues
+ * - Uses a section configuration array to make adding new sections easier
  * - Implements proper animation schedule to avoid frame drops
  * - Uses content-visibility to improve rendering performance
  */
 const Execom = () => {
   const { nodalOfficers, studentLeads, correspondingLeads } = execomMembers;
+  
+  // Configure sections in an array for easy addition of new sections
+  const sections: ExecomSectionConfig[] = [
+    { id: 'nodal-officers', title: 'Nodal Officers', members: nodalOfficers, priority: 'high' },
+    { id: 'student-leads', title: 'Student Leads', members: studentLeads, priority: 'medium' },
+    { id: 'corresponding-leads', title: 'Corresponding Leads', members: correspondingLeads, priority: 'low' },
+    // To add a new section, simply add a new object to this array with id, title, and members
+    // Example: { id: 'new-section', title: 'New Section Title', members: newSectionMembers }
+  ];
   
   return (
     <div className="min-h-screen py-12 mt-16 fade-in will-change-opacity">
@@ -169,18 +186,18 @@ const Execom = () => {
           Executive Committee
         </h1>
         
-        {/* Render sections with content-visibility to improve performance */}
-        <div style={{ contentVisibility: 'auto', containIntrinsicSize: '0 500px' }}>
-          <ExecomSection title="Nodal Officers" members={nodalOfficers} />
-        </div>
-        
-        <div style={{ contentVisibility: 'auto', containIntrinsicSize: '0 1000px' }}>
-          <ExecomSection title="Student Leads" members={studentLeads} />
-        </div>
-        
-        <div style={{ contentVisibility: 'auto', containIntrinsicSize: '0 500px' }}>
-          <ExecomSection title="Corresponding Leads" members={correspondingLeads} />
-        </div>
+        {/* Map through section configurations to render each section */}
+        {sections.map((section, index) => (
+          <div 
+            key={section.id}
+            style={{ 
+              contentVisibility: 'auto', 
+              containIntrinsicSize: section.members.length > 8 ? '0 1000px' : '0 500px'
+            }}
+          >
+            <ExecomSection title={section.title} members={section.members} />
+          </div>
+        ))}
       </div>
     </div>
   );
