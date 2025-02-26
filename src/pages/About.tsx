@@ -38,6 +38,22 @@ const timelineEvents: TimelineEvent[] = [
   }
 ];
 
+// Logo data for the placeholders
+const logos = [
+  {
+    alt: "Innovation Hub",
+    src: "/IEDC LOGO FINAL.svg",
+  },
+  {
+    alt: "Kerala Startup Mission",
+    src: "/IEDC LOGO FINAL.svg",
+  },
+  {
+    alt: "IEDC CVV",
+    src: "/IEDC LOGO FINAL.svg",
+  }
+];
+
 const About = () => {
   return (
     <motion.div
@@ -54,6 +70,25 @@ const About = () => {
         >
           About Us
         </motion.h1>
+
+        {/* Logo Section - 3 large logos */}
+        <div className="flex flex-wrap justify-center gap-8 mb-16">
+          {logos.map((logo, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2 }}
+              className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm"
+            >
+              <img 
+                src={logo.src} 
+                alt={logo.alt} 
+                className="w-40 h-40 object-contain" 
+              />
+            </motion.div>
+          ))}
+        </div>
 
         {/* Mission Statement */}
         <div className="max-w-3xl mx-auto mb-16">
@@ -74,26 +109,45 @@ const About = () => {
         </motion.h2>
 
         <div className="max-w-4xl mx-auto">
+          {/* Responsive timeline that works well on mobile */}
           {timelineEvents.map((event, index) => (
             <motion.div
               key={event.date}
               initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.2 }}
-              className="flex items-center mb-8"
+              className="flex flex-col md:flex-row md:items-center mb-12 relative"
             >
-              <div className="w-1/3 text-right pr-8">
+              {/* Mobile layout (stacked) */}
+              <div className="flex items-center md:hidden mb-4">
+                <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white z-10">
+                  {event.icon}
+                </div>
+                <div className="ml-4">
+                  <span className="text-lg font-semibold text-primary">{event.date}</span>
+                </div>
+              </div>
+              
+              {/* Desktop layout (horizontal) */}
+              <div className="hidden md:block md:w-1/3 md:text-right md:pr-8">
                 <span className="text-lg font-semibold text-primary">{event.date}</span>
               </div>
-              <div className="relative">
-                <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white">
+              
+              <div className="hidden md:relative md:flex md:items-center md:justify-center">
+                <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white z-10">
                   {event.icon}
                 </div>
                 {index !== timelineEvents.length - 1 && (
-                  <div className="absolute top-12 left-1/2 transform -translate-x-1/2 w-0.5 h-16 bg-primary" />
+                  <div className="absolute top-12 left-1/2 transform -translate-x-1/2 w-0.5 h-24 bg-primary" />
                 )}
               </div>
-              <div className="w-2/3 pl-8">
+              
+              {/* Content - same for both layouts */}
+              <div className="pl-12 md:pl-8 md:w-2/3 relative">
+                {/* Vertical line for mobile */}
+                {index !== timelineEvents.length - 1 && (
+                  <div className="absolute top-0 left-6 transform -translate-x-1/2 w-0.5 h-full bg-primary md:hidden" />
+                )}
                 <h3 className="text-xl font-semibold mb-2">{event.title}</h3>
                 <p className="text-gray-600">{event.description}</p>
               </div>
