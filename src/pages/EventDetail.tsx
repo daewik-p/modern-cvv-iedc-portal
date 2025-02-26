@@ -3,34 +3,14 @@ import { motion } from "framer-motion";
 import { useParams, useNavigate } from "react-router-dom";
 import { Calendar, MapPin, Clock, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-// Combine all events for easy lookup
-const allEvents = [
-  {
-    id: "innovation-workshop-2024",
-    title: "Innovation Workshop",
-    date: "March 15, 2024",
-    time: "10:00 AM",
-    location: "Main Auditorium",
-    image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81",
-    category: "Workshop",
-    description: "Join us for an intensive workshop on innovation and entrepreneurship. Learn from industry experts about the latest trends and techniques in innovation. This full-day workshop will cover topics including design thinking, rapid prototyping, and lean startup methodologies.\n\nWhat you'll learn:\n- Innovation fundamentals\n- Design thinking principles\n- Rapid prototyping techniques\n- Lean startup methodology\n\nThis workshop is perfect for students, entrepreneurs, and professionals looking to enhance their innovation skills.",
-  },
-  {
-    id: "entrepreneurship-summit-2023",
-    title: "Entrepreneurship Summit 2023",
-    date: "December 10, 2023",
-    time: "9:00 AM",
-    location: "Conference Hall",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
-    category: "Summit",
-    description: "The Entrepreneurship Summit 2023 brought together leading entrepreneurs, innovators, and industry experts for a day of learning, networking, and inspiration. The summit featured keynote speeches, panel discussions, and interactive sessions focused on the future of entrepreneurship and innovation.\n\nHighlights included:\n- Keynote speeches from successful entrepreneurs\n- Panel discussions on emerging trends\n- Networking opportunities\n- Startup showcase\n\nThe event was a great success, with over 200 participants learning from and connecting with industry leaders.",
-  },
-];
+import { upcomingEvents, pastEvents, type Event } from "@/data/events";
 
 const EventDetail = () => {
   const { eventId } = useParams();
   const navigate = useNavigate();
+  
+  // Combine all events from both upcoming and past events
+  const allEvents: Event[] = [...upcomingEvents, ...pastEvents];
   const event = allEvents.find(e => e.id === eventId);
 
   if (!event) {
