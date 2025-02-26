@@ -35,7 +35,7 @@ const MemberCard = memo(({ member, index }: { member: ExecomMember; index: numbe
             height="300"
             className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
             decoding="async"
-            fetchPriority={index < 3 ? "high" : "auto"} // Corrected casing: fetchPriority instead of fetchpriority
+            fetchPriority={index < 3 ? "high" : "auto"}
           />
           {member.linkedin && (
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center pb-4">
@@ -53,9 +53,9 @@ const MemberCard = memo(({ member, index }: { member: ExecomMember; index: numbe
           )}
         </div>
         <div className="p-3 text-center">
-  <h3 className="text-base font-semibold mb-0.5 line-clamp-1">{member.name}</h3>
-  <p className="text-primary text-sm line-clamp-1">{member.role}</p>
-</div>
+          <h3 className="text-base font-semibold mb-0.5 line-clamp-1">{member.name}</h3>
+          <p className="text-primary text-sm line-clamp-1">{member.role}</p>
+        </div>
       </div>
     </div>
   );
@@ -128,24 +128,26 @@ const ExecomSection = memo(({ title, members }: { title: string; members: Execom
       <h2 className="text-2xl font-semibold mb-6 text-center slide-in">
         {title}
       </h2>
-      <div className="flex justify-center px-4">
-  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 w-full max-w-6xl">
-    {members.map((member, index) => (
-      <div key={member.name} className="flex justify-center">
-        <div className="flex justify-center items-center w-full max-w-[240px]"> {/* Added flex and items-center here */}
-          {visibleItems[index] ? (
-            <MemberCard member={member} index={index} />
-          ) : (
-            <div 
-              className="w-full aspect-[4/5] bg-gray-100 rounded-lg animate-pulse"
-              aria-hidden="true"
-            />
-          )}
+      
+      {/* Center-aligned grid container */}
+      <div className="px-4">
+        {/* This grid is centered using auto margins and with justify-items-center */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-auto justify-items-center" 
+             style={{ maxWidth: Math.min(members.length * 260, 1200) + 'px' }}>
+          {members.map((member, index) => (
+            <div key={member.name} className="w-full max-w-[240px]">
+              {visibleItems[index] ? (
+                <MemberCard member={member} index={index} />
+              ) : (
+                <div 
+                  className="w-full aspect-[4/5] bg-gray-100 rounded-lg animate-pulse"
+                  aria-hidden="true"
+                />
+              )}
+            </div>
+          ))}
         </div>
       </div>
-    ))}
-  </div>
-</div>
     </section>
   );
 });
@@ -167,15 +169,15 @@ interface ExecomSectionConfig {
  * - Uses content-visibility to improve rendering performance
  */
 const Execom = () => {
-  const { nodalOfficers,cio,epl,qo,finance,hiad,ht,si,hd,rc,bm,we,hc,ipr,itd } = execomMembers;
+  const { nodalOfficers, cio, epl, qo, finance, hiad, ht, si, hd, rc, bm, we, hc, ipr, itd } = execomMembers;
   
   // Configure sections in an array for easy addition of new sections
   const sections: ExecomSectionConfig[] = [
     { id: 'nodal-officers', title: 'Nodal Officers', members: nodalOfficers, priority: 'high' },
-    { id: "Chief-Innovation-Officer", title: "Chief Innovation Officer", members:cio, priority: "low" },
+    { id: "Chief-Innovation-Officer", title: "Chief Innovation Officer", members: cio, priority: "low" },
     { id: "Executive-Program-Lead", title: "Executive Program Lead", members: epl, priority: "low" },
-    { id: "Head-Quality-Operations", title: "Head of Quality & Operations", members:qo, priority: "low" },
-    { id: "Head-Finance", title: "Head of Finance", members:finance, priority: "low" },
+    { id: "Head-Quality-Operations", title: "Head of Quality & Operations", members: qo, priority: "low" },
+    { id: "Head-Finance", title: "Head of Finance", members: finance, priority: "low" },
     { id: "Head-Innovation-Development", title: "Head of Innovation & Development", members: hiad, priority: "low" },
     { id: "Head-Technology", title: "Head of Technology", members: ht, priority: "low" },
     { id: "Head-Startup-Incubation", title: "Head of Startup Incubation", members: si, priority: "low" },
@@ -187,10 +189,9 @@ const Execom = () => {
     { id: "Head-IPR", title: "Head of IPR", members: ipr, priority: "low" },
     { id: "Head-Internship-Talent-Development", title: "Head of Internship & Talent Development", members: itd, priority: "low" }
   ];
-// To add a new section, simply add a new object to this array with id, title, and members
-  // Example: { id: 'new-section', title: 'New Section Title', members: newSectionMembers }
+  
   return (
-    <div className="min-h-screen py-12 mt-16 fade-in will-change-opacity">
+    <div className="min-h-screen py-12 mt-16 fade-in">
       <div className="container mx-auto">
         <h1 className="text-3xl font-bold text-center mb-10 slide-in">
           Executive Committee
