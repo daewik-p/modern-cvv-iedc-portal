@@ -25,13 +25,23 @@ export const upcomingEvents: Event[] = [
 
 export const pastEvents: Event[] = [
   {
-    id: "entrepreneurship-summit-2023",
-    title: "Entrepreneurship Summit 2023",
-    date: "December 10, 2023",
-    time: "9:00 AM",
-    location: "Conference Hall",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+    id: "cat24",
+    title: "Catalyst 2024",
+    date: "November 10, 2024",
+    time: "2:00 PM",
+    location: "LP - A325",
+    image: "Events\catalyst.jpg",
     category: "Summit",
+    description: "A gathering of entrepreneurs and innovators discussing the future of business.",
+  },
+  {
+    id: "brandyou_01",
+    title: "Brand You : LinkedIn Mastery Workshop",
+    date: "February 10, 2024",
+    time: "3:00 PM",
+    location: "LP - A404",
+    image: "Events\brand.jpg",
+    category: "Internal Workshop",
     description: "A gathering of entrepreneurs and innovators discussing the future of business.",
   },
 ];

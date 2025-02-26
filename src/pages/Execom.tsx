@@ -1,4 +1,3 @@
-
 import { Linkedin } from "lucide-react";
 import { type ExecomMember, execomMembers } from "@/data/execom";
 import { memo, useState, useEffect, useRef } from "react";
@@ -53,9 +52,9 @@ const MemberCard = memo(({ member, index }: { member: ExecomMember; index: numbe
           )}
         </div>
         <div className="p-3 text-center">
-          <h3 className="text-base font-semibold mb-0.5 line-clamp-1">{member.name}</h3>
-          <p className="text-primary text-sm line-clamp-1">{member.role}</p>
-        </div>
+  <h3 className="text-base font-semibold mb-0.5 line-clamp-1">{member.name}</h3>
+  <p className="text-primary text-sm line-clamp-1">{member.role}</p>
+</div>
       </div>
     </div>
   );
@@ -129,24 +128,23 @@ const ExecomSection = memo(({ title, members }: { title: string; members: Execom
         {title}
       </h2>
       <div className="flex justify-center px-4">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 w-full max-w-6xl">
-          {members.map((member, index) => (
-            <div key={member.name} className="flex justify-center">
-              <div className="w-full max-w-[240px]">
-                {visibleItems[index] ? (
-                  <MemberCard member={member} index={index} />
-                ) : (
-                  // Improved placeholder with fixed dimensions to prevent layout shifts
-                  <div 
-                    className="w-full aspect-[4/5] bg-gray-100 rounded-lg animate-pulse"
-                    aria-hidden="true"
-                  />
-                )}
-              </div>
-            </div>
-          ))}
+  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 w-full max-w-6xl">
+    {members.map((member, index) => (
+      <div key={member.name} className="flex justify-center">
+        <div className="flex justify-center items-center w-full max-w-[240px]"> {/* Added flex and items-center here */}
+          {visibleItems[index] ? (
+            <MemberCard member={member} index={index} />
+          ) : (
+            <div 
+              className="w-full aspect-[4/5] bg-gray-100 rounded-lg animate-pulse"
+              aria-hidden="true"
+            />
+          )}
         </div>
       </div>
+    ))}
+  </div>
+</div>
     </section>
   );
 });
@@ -168,17 +166,28 @@ interface ExecomSectionConfig {
  * - Uses content-visibility to improve rendering performance
  */
 const Execom = () => {
-  const { nodalOfficers, studentLeads, correspondingLeads } = execomMembers;
+  const { nodalOfficers,cio,epl,qo,finance,hiad,ht,si,hd,rc,bm,we,hc,ipr,itd } = execomMembers;
   
   // Configure sections in an array for easy addition of new sections
   const sections: ExecomSectionConfig[] = [
     { id: 'nodal-officers', title: 'Nodal Officers', members: nodalOfficers, priority: 'high' },
-    { id: 'student-leads', title: 'Student Leads', members: studentLeads, priority: 'medium' },
-    { id: 'corresponding-leads', title: 'Corresponding Leads', members: correspondingLeads, priority: 'low' },
-    // To add a new section, simply add a new object to this array with id, title, and members
-    // Example: { id: 'new-section', title: 'New Section Title', members: newSectionMembers }
+    { id: "Chief-Innovation-Officer", title: "Chief Innovation Officer", members:cio, priority: "low" },
+    { id: "Executive-Program-Lead", title: "Executive Program Lead", members: epl, priority: "low" },
+    { id: "Head-Quality-Operations", title: "Head of Quality & Operations", members:qo, priority: "low" },
+    { id: "Head-Finance", title: "Head of Finance", members:finance, priority: "low" },
+    { id: "Head-Innovation-Development", title: "Head of Innovation & Development", members: hiad, priority: "low" },
+    { id: "Head-Technology", title: "Head of Technology", members: ht, priority: "low" },
+    { id: "Head-Startup-Incubation", title: "Head of Startup Incubation", members: si, priority: "low" },
+    { id: "Head-Documentation", title: "Head of Documentation", members: hd, priority: "low" },
+    { id: "Head-Research-Collaboration", title: "Head of Research & Collaboration", members: rc, priority: "low" },
+    { id: "Head-Branding-Marketing", title: "Head of Branding & Marketing", members: bm, priority: "low" },
+    { id: "Head-Women-Entrepreneurship", title: "Head of Women Entrepreneurship", members: we, priority: "low" },
+    { id: "Head-Community", title: "Head of Community", members: hc, priority: "low" },
+    { id: "Head-IPR", title: "Head of IPR", members: ipr, priority: "low" },
+    { id: "Head-Internship-Talent-Development", title: "Head of Internship & Talent Development", members: itd, priority: "low" }
   ];
-  
+// To add a new section, simply add a new object to this array with id, title, and members
+  // Example: { id: 'new-section', title: 'New Section Title', members: newSectionMembers }
   return (
     <div className="min-h-screen py-12 mt-16 fade-in will-change-opacity">
       <div className="container mx-auto">
