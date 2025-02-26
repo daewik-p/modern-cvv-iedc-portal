@@ -8,7 +8,7 @@ interface GalleryItem {
 }
 
 // Import all images from the "public/Gallery" folder and its subfolders
-const images = import.meta.glob("/public/Gallery/*/*.{jpg,jpeg,png,webp,gif}"); // Includes subfolders
+const images = import.meta.glob("/public/Gallery/*/*.{jpg,jpeg,png,webp,gif,JPG,HEIC}"); // Includes subfolders
 
 const Gallery = () => {
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
@@ -59,8 +59,8 @@ const Gallery = () => {
   return (
     <div className="min-h-screen py-16 mt-16 fade-in">
       <div className="container mx-auto px-4" ref={galleryRef}>
-        <h1 className="text-3xl font-bold text-center mb-12 slide-in">
-          Activity Arena
+        <h1 className="text-4xl font-bold text-center mb-12 slide-in">
+          Frames of Passion & Innovation
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 content-visibility-auto">
           {galleryItems.map((item, index) => (
