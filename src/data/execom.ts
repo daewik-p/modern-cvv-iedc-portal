@@ -19,7 +19,7 @@ export interface ExecomMembers {
   rc: ExecomMember[];
   bm: ExecomMember[];
   we: ExecomMember[];
-  ipr: ExecomMember[];
+  ipr:ExecomMember[];
   hc: ExecomMember[];
   itd: ExecomMember[];
 }
@@ -29,6 +29,12 @@ export const execomMembers: ExecomMembers = {
   nodalOfficers: [
     {
       name: "Mrs. Anupama Jims",
+      role: "Nodal Officer",
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+      linkedin: "https://linkedin.com/in/example",
+    },
+    {
+      name: "Dr. Savitesh M Sharma",
       role: "Nodal Officer",
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
       linkedin: "https://linkedin.com/in/example",
@@ -121,6 +127,7 @@ export const execomMembers: ExecomMembers = {
     },
     {
       name: "Potla Akhil",
+
       role: "Branding & Marketing",
       image: "execom/akhil.jpg",
       linkedin: "http://www.linkedin.com/in/akhil0719"

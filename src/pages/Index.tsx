@@ -58,7 +58,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-5xl md:text-6xl font-bold text-white mb-6"
+            className="text-xl md:text-7xl font-bold text-white mb-6"
           >
             Meet New Dimensions
           </motion.h1>
@@ -66,10 +66,10 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto"
+            className="text-xl text-gray-100 mb-10 max-w-2xl mx-auto"
           >
-            CVV IEDC is a hub for innovation, entrepreneurship, and technological advancement.
-            We nurture ideas that shape the future.
+            IEDC @CVV is the hub for innovation, entrepreneurship, and technological advancement.
+            We thrive to nurture ideas that shape the future.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

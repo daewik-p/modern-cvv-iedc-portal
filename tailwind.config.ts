@@ -23,33 +23,37 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        background: "#E9DBD8", // Warm Taupe for Background
+        foreground: "#000000", // Black for contrast
         primary: {
-          DEFAULT: "#0a192f",
-          foreground: "#FFFFFF",
+          DEFAULT: "#664242", // Custom Navbar Color
+          foreground: "#000000", 
         },
         secondary: {
-          DEFAULT: "#7E69AB",
-          foreground: "#FFFFFF",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "#D8FFE9", // Mint Green
+          foreground: "#000000",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "#E9DBD8", // Warm Taupe
+          foreground: "#000000",
+        },
+        navbar: {
+          DEFAULT: "#664242", // Custom Navbar Color
+          foreground: "#FFFFFF",
         },
         card: {
-          DEFAULT: "#FFFFFF",
-          foreground: "#222222",
+          DEFAULT: "#FFFFFF", // White for cards
+          foreground: "#000000",
         },
-      },
+        muted: {
+          DEFAULT: "#FFE9DB", // Peach Beige
+          foreground: "#000000",
+        },
+        destructive: {
+          DEFAULT: "#FF1E1E", // Vibrant Red
+          foreground: "#FFFFFF",
+        },
+      },                
       keyframes: {
         "fade-up": {
           "0%": {

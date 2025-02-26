@@ -1,14 +1,15 @@
-
 import { motion } from "framer-motion";
 import { useParams, useNavigate } from "react-router-dom";
 import { Calendar, MapPin, Clock, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { upcomingEvents, pastEvents, type Event } from "@/data/events";
+import { upcomingEvents, pastEvents } from "@/data/events"; // Import event data
+
+const allEvents = [...upcomingEvents, ...pastEvents];
 
 const EventDetail = () => {
   const { eventId } = useParams();
   const navigate = useNavigate();
-  
+
   // Combine all events from both upcoming and past events
   const allEvents: Event[] = [...upcomingEvents, ...pastEvents];
   const event = allEvents.find(e => e.id === eventId);
@@ -18,7 +19,7 @@ const EventDetail = () => {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Event not found</h1>
-          <Button onClick={() => navigate('/events')}>
+          <Button onClick={() => navigate("/events")}>
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Events
           </Button>
@@ -27,7 +28,12 @@ const EventDetail = () => {
     );
   }
 
-  const isUpcoming = new Date(event.date) > new Date();
+  const isUpcoming = Date.parse(event.date) > Date.now();
+
+  // Fix duplicate "/Events/Events/" issue
+  const getImagePath = () => {
+    return `/Events/${event.image.replace(/^Events\//, '')}`; // Ensure "/Events/" is only once
+  };
 
   return (
     <motion.div
@@ -37,18 +43,14 @@ const EventDetail = () => {
       className="min-h-screen py-16 mt-16"
     >
       <article className="container mx-auto px-4 max-w-4xl">
-        <Button
-          variant="ghost"
-          onClick={() => navigate('/events')}
-          className="mb-8"
-        >
+        <Button variant="ghost" onClick={() => navigate("/events")} className="mb-8">
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Events
         </Button>
 
         <div className="relative rounded-xl overflow-hidden mb-8">
           <img
-            src={event.image}
+            src={getImagePath()} // Corrected image path
             alt={event.title}
             className="w-full aspect-video object-cover"
           />
@@ -78,13 +80,11 @@ const EventDetail = () => {
           </div>
 
           {isUpcoming && (
-            <Button className="w-full md:w-auto">
-              Register Now
-            </Button>
+            <Button className="w-full md:w-auto">Register Now</Button>
           )}
 
           <div className="prose prose-lg max-w-none">
-            {event.description.split('\n\n').map((paragraph, index) => (
+            {event.description.split("\n\n").map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
           </div>

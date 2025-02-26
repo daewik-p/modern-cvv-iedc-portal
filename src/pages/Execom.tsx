@@ -217,25 +217,25 @@ const Execom = () => {
     { id: 'nodal-officers', title: 'Nodal Officers', members: nodalOfficers, priority: 'high' as const },
     { id: 'cio', title: 'Chief Innovation Officer', members: cio },
     { id: 'epl', title: 'Executive Program Lead', members: epl },
-    { id: 'qo', title: 'Head of Quality & Operations', members: qo },
-    { id: 'finance', title: 'Head of Finance', members: finance },
-    { id: 'hiad', title: 'Head of Innovation & Development', members: hiad },
-    { id: 'ht', title: 'Head of Technology', members: ht },
-    { id: 'si', title: 'Head of Startup Incubation', members: si },
-    { id: 'hd', title: 'Head of Documentation', members: hd },
-    { id: 'rc', title: 'Head of Research & Collaboration', members: rc },
-    { id: 'bm', title: 'Head of Branding & Marketing', members: bm },
-    { id: 'we', title: 'Head of Women Entrepreneurship', members: we },
-    { id: 'hc', title: 'Head of Community', members: hc },
-    { id: 'ipr', title: 'Head of IPR', members: ipr },
-    { id: 'itd', title: 'Head of Internship & Talent Development', members: itd },
+    { id: 'qo', title: 'Quality & Operations', members: qo },
+    { id: 'finance', title: 'Finance And Strategy', members: finance },
+    { id: 'hiad', title: 'Innovation & Development', members: hiad },
+    { id: 'ht', title: 'Technology', members: ht },
+    { id: 'si', title: 'Startup and Incubation', members: si },
+    { id: 'hd', title: 'Documentation and Institutional Records', members: hd },
+    { id: 'rc', title: 'Research & Collaboration', members: rc },
+    { id: 'bm', title: 'Branding & Marketing', members: bm },
+    { id: 'we', title: 'Women Entrepreneurship', members: we },
+    { id: 'hc', title: 'Community and Collaboration', members: hc },
+    { id: 'ipr', title: 'Intellectual Property Right', members: ipr },
+    { id: 'itd', title: 'Internship & Talent Development', members: itd },
   ];
 
   return (
     <div className="min-h-screen py-16 mt-16">
       <div className="container mx-auto">
-        <h1 className="text-3xl font-bold text-center mb-16 animate-fade-in">
-          Executive Committee
+        <h1 className="text-5xl font-bold text-center mb-16 animate-fade-in">
+          Executive Committee 2025
         </h1>
         
         {sections.map((section) => (
