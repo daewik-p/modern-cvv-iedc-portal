@@ -1,6 +1,8 @@
 {
   "name": "vite_react_shadcn_ts",
   "private": true,
+  "homepage": "https://daewik-p.github.io/modern-cvv-iedc-portal",
+
   "version": "0.0.0",
   "type": "module",
   "scripts": {
