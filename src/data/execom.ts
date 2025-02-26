@@ -31,14 +31,14 @@ export const execomMembers: ExecomMembers = {
       name: "Mrs. Anupama Jims",
       role: "Nodal Officer",
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-      linkedin: "https://linkedin.com/in/anupama-jims",
+      linkedin: "https://linkedin.com/in/example",
     },
   ],
   cio: [
     {
       name: "Krishna K",
       role: "Chief Innovation Officer",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+      image: "execom/krishna.jpg",
       linkedin: "https://www.linkedin.com/in/krishnak535",
     }
   ],
@@ -46,7 +46,7 @@ export const execomMembers: ExecomMembers = {
     {
       name: "Rosemary Tomy",
       role: "Executive Program Lead",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a",
+      image: "execom/rosemary.jpg",
       linkedin: "https://linkedin.com/in/rosemarytomy1212",
     }
   ],
@@ -62,13 +62,13 @@ export const execomMembers: ExecomMembers = {
     {
       name: "Gopika V K",
       role: "Head of Quality & Operations",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a",
+      image: "execom/gopika.jpg",
       linkedin: "https://linkedin.com/in/rosemarytomy1212",
     },
     {
       name: "Nakshathra S Nair",
       role: "Sub Lead - Quality & Operations",
-      image: "file",
+      image: "execom/nakshathra.jpg",
       linkedin: "https://www.linkedin.com/in/nakshathranaksh"
     }
   ],
@@ -76,7 +76,7 @@ export const execomMembers: ExecomMembers = {
     {
       name: "Mathews Varghese",
       role: "Head of Finance",
-      image: "file",
+      image: "execom/mathews.jpg",
       linkedin: "https://www.linkedin.com/in/mathews-varghese"
     }
   ],
@@ -84,7 +84,7 @@ export const execomMembers: ExecomMembers = {
     {
       name: "Anuja S Nair",
       role: "Head of Innovation & Development",
-      image: "file",
+      image: " execom/anuja.jpg",
       linkedin: "https://www.linkedin.com/in/anuja-s-nair-777315322"
     }
   ],
@@ -92,7 +92,7 @@ export const execomMembers: ExecomMembers = {
     {
       name: "Niranjana Uday",
       role: "Head of Startup Incubation",
-      image: "file",
+      image: "execom/niranjanau.jpg",
       linkedin: "https://www.linkedin.com/in/niranjana-uday/"
     }
   ],
@@ -100,7 +100,7 @@ export const execomMembers: ExecomMembers = {
     {
       name: "Bharathi Devi",
       role: "Head of Documentation",
-      image: "file",
+      image: " execom/bharathi.jpg",
       linkedin: "https://www.linkedin.com/in/bharathi47"
     }
   ],
@@ -108,7 +108,7 @@ export const execomMembers: ExecomMembers = {
     {
       name: "Anjana Prakash",
       role: "Head of Research & Collaboration",
-      image: "file",
+      image: "execom/anjana.jpg",
       linkedin: "https://www.linkedin.com/in/anjanaprakash017"
     }
   ],
@@ -116,19 +116,19 @@ export const execomMembers: ExecomMembers = {
     {
       name: "Aarcha Praveen",
       role: "Head of Branding & Marketing",
-      image: "file",
+      image: "execom/aarcha.jpg",
       linkedin: "http://www.linkedin.com/in/aarchapraveen012"
     },
     {
       name: "Potla Akhil",
       role: "Branding & Marketing",
-      image: "file",
+      image: "execom/akhil.jpg",
       linkedin: "http://www.linkedin.com/in/akhil0719"
     },
     {
       name: "M Rudra Varma",
       role: "Branding & Marketing",
-      image: "file",
+      image: " execom/rudra.jpg",
       linkedin: "https://www.linkedin.com/in/mrudravarmaa"
     }
   ],
@@ -136,13 +136,13 @@ export const execomMembers: ExecomMembers = {
     {
       name: "Anagha Suresh",
       role: "Head of Women Entrepreneurship",
-      image: "file",
+      image: "execom/anagha.jpg",
       linkedin: "http://www.linkedin.com/in/anaghasuresh04"
     },
     {
       name: "Sona Monichen",
       role: "Women Entrepreneurship",
-      image: "file",
+      image: "execom/sona.JPG",
       linkedin: "https://www.linkedin.com/in/sona-monichen-23a830313/"
     }
   ],
@@ -150,7 +150,7 @@ export const execomMembers: ExecomMembers = {
     {
       name: "Nayana Anna Biju",
       role: "Head of Community",
-      image: "file",
+      image: "execom/nayana.jpg",
       linkedin: "https://www.linkedin.com/in/nayana-anna-biju-454903255"
     }
   ],
@@ -158,7 +158,7 @@ export const execomMembers: ExecomMembers = {
     {
       name: "Gowri Gopika",
       role: "Head of IPR",
-      image: "file",
+      image: "execom/gowri.jpg",
       linkedin: "https://www.linkedin.com/in/gowri-gopika-"
     } 
   ],
@@ -166,13 +166,13 @@ export const execomMembers: ExecomMembers = {
     {
       name: "Niranjana Gireesh",
       role: "Head of Internship & Talent Development",
-      image: "file",
+      image: "execom/niranjanag.jpg",
       linkedin: "https://www.linkedin.com/in/niranjanagireesh0410"
     }, 
     {
       name: "Akshara U",
       role: "Internship & Talent Development",
-      image: "file",
+      image: "execom/akshara.jpg",
       linkedin: ""
     }
     ]
