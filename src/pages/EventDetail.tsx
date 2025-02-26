@@ -9,7 +9,10 @@ const allEvents = [...upcomingEvents, ...pastEvents];
 const EventDetail = () => {
   const { eventId } = useParams();
   const navigate = useNavigate();
-  const event = allEvents.find((e) => e.id === eventId);
+
+  // Combine all events from both upcoming and past events
+  const allEvents: Event[] = [...upcomingEvents, ...pastEvents];
+  const event = allEvents.find(e => e.id === eventId);
 
   if (!event) {
     return (

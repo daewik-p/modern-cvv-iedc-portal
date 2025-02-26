@@ -31,7 +31,7 @@ export const execomMembers: ExecomMembers = {
       name: "Mrs. Anupama Jims",
       role: "Nodal Officer",
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-      linkedin: "https://linkedin.com/in/anupama-jims",
+      linkedin: "https://linkedin.com/in/example",
     },
     {
       name: "Dr. Savitesh M Sharma",
@@ -127,13 +127,14 @@ export const execomMembers: ExecomMembers = {
     },
     {
       name: "Potla Akhil",
-      role: "Sub - Lead Branding & Marketing",
+
+      role: "Branding & Marketing",
       image: "execom/akhil.jpg",
       linkedin: "http://www.linkedin.com/in/akhil0719"
     },
     {
       name: "M Rudra Varma",
-      role: "Sub- Lead Branding & Marketing",
+      role: "Branding & Marketing",
       image: " execom/rudra.jpg",
       linkedin: "https://www.linkedin.com/in/mrudravarmaa"
     }
@@ -147,7 +148,7 @@ export const execomMembers: ExecomMembers = {
     },
     {
       name: "Sona Monichen",
-      role: "Sub - Lead Women Entrepreneurship",
+      role: "Women Entrepreneurship",
       image: "execom/sona.JPG",
       linkedin: "https://www.linkedin.com/in/sona-monichen-23a830313/"
     }
@@ -177,7 +178,7 @@ export const execomMembers: ExecomMembers = {
     }, 
     {
       name: "Akshara U",
-      role: "Sub- Lead Internship & Talent Development",
+      role: "Internship & Talent Development",
       image: "execom/akshara.jpg",
       linkedin: ""
     }
