@@ -25,16 +25,6 @@ export const upcomingEvents: Event[] = [
 
 export const pastEvents: Event[] = [
   {
-    id: "cat24",
-    title: "Catalyst 2024",
-    date: "November 10, 2024",
-    time: "2:00 PM",
-    location: "LP - A325",
-    image: "Events\catalyst.jpg",
-    category: "Summit",
-    description: "A gathering of entrepreneurs and innovators discussing the future of business.",
-  },
-  {
     id: "brandyou_01",
     title: "Brand You : LinkedIn Mastery Workshop",
     date: "February 10, 2024",
@@ -43,5 +33,15 @@ export const pastEvents: Event[] = [
     image: "Events\brand.jpg",
     category: "Internal Workshop",
     description: "A gathering of entrepreneurs and innovators discussing the future of business.",
+  },
+  {
+    id: "cat24",
+    title: "Catalyst 2024",
+    date: "November 10, 2024",
+    time: "2:00 PM",
+    location: "LP - A325",
+    image: "Events\catalyst.jpg",
+    category: "Ideathon",
+    description: "Our first idea pitching competition in collaboration with IIC.",
   },
 ];

@@ -68,8 +68,8 @@ const Index = () => {
             transition={{ delay: 0.4 }}
             className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto"
           >
-            CVV IEDC is a hub for innovation, entrepreneurship, and technological advancement.
-            We nurture ideas that shape the future.
+            IEDC @CVV is the hub for innovation, entrepreneurship, and technological advancement.
+            We thrive to nurture ideas that shape the future.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
