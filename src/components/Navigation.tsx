@@ -1,13 +1,12 @@
-
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 // Pre-define navigation links to avoid recreation on each render
 const navigationLinks = [
-  { href: "/about", label: "About" },
-  { href: "/execom", label: "Execom" },
   { href: "/events", label: "Events" },
   { href: "/gallery", label: "Gallery" },
+  { href: "/execom", label: "Execom" },
+  { href: "/about", label: "About" },
 ];
 
 const Navigation = () => {
@@ -24,7 +23,7 @@ const Navigation = () => {
               width={96}
               height={52}
               className="h-8 w-auto transform-gpu hover:brightness-110 transition-all duration-300"
-              style={{ filter: 'invert(0.5) sepia(1) saturate(1) hue-rotate(220deg)' }}
+              style={{ filter: 'invert(0.8) sepia(0.9) saturate(1.5) hue-rotate(190deg) brightness(0.5)' }}
             />
           </Link>
           <div className="flex space-x-8">
