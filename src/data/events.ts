@@ -39,7 +39,7 @@ export const pastEvents: Event[] = [
     title: "Rajagiri IEDC Visit",
     date: "February 10, 2024",
     time: "4:30 PM",
-    location: " IEDC, Rajagiri School of Engineering and Technology, Rajagiri Valley, Ernakulam",
+    location: "IEDC-RSET, Rajagiri Valley, Ernakulam",
     image: "Events/rajagiri.jpg",
     category: "Visit",
     description: "RSET IEDC orientation and Incubation Centre Visit.",
