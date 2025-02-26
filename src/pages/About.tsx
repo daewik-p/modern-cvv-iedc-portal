@@ -41,17 +41,18 @@ const timelineEvents: TimelineEvent[] = [
 // Logo data for the placeholders
 const logos = [
   {
-    alt: "Innovation Hub",
-    src: "/IEDC LOGO FINAL.svg",
-  },
-  {
-    alt: "Kerala Startup Mission",
-    src: "/IEDC LOGO FINAL.svg",
+    alt: "IEDC KSUM",
+    src: "/IEDC_KSUM_original.png",
   },
   {
     alt: "IEDC CVV",
     src: "/IEDC LOGO FINAL.svg",
+  },  
+  {
+    alt: "Kerala StartUp Mission",
+    src: "/KSUM.svg",
   }
+
 ];
 
 const About = () => {
@@ -72,19 +73,19 @@ const About = () => {
         </motion.h1>
 
         {/* Logo Section - 3 large logos */}
-        <div className="flex flex-wrap justify-center gap-8 mb-16">
+        <div className="flex flex-wrap justify-center gap-10 mb-16">
           {logos.map((logo, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
-              className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm"
+              className="flex items-center justify-center p-4"
             >
               <img 
                 src={logo.src} 
                 alt={logo.alt} 
-                className="w-40 h-40 object-contain" 
+                className="w-auto h-20 object-contain" 
               />
             </motion.div>
           ))}
