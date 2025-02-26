@@ -1,43 +1,39 @@
+
 import { Linkedin } from "lucide-react";
 import { type ExecomMember, execomMembers } from "@/data/execom";
 import { memo, useState, useEffect, useRef } from "react";
 
 /**
- * MemberCard Component - Optimized for performance and reduced cache
- * - Uses memo to prevent unnecessary re-renders
- * - Implements proper image loading with native attributes
- * - Uses width/height constraints to prevent layout shifts
- * - Implements proper image loading strategies
+ * MemberCard Component - Displays a single execom member
  */
 const MemberCard = memo(({ member, index }: { member: ExecomMember; index: number }) => {
-  // Determine if image is a URL or local path to handle properly
+  // Determine if image is a URL or local path
   const isExternalImage = member.image.startsWith('http');
   
-  // Apply image optimization query params for external images (like Unsplash)
-  // This reduces file size while maintaining quality
-  const optimizedImageSrc = isExternalImage 
+  // Optimize external images
+  const imageSrc = isExternalImage 
     ? `${member.image}${member.image.includes('?') ? '&' : '?'}w=300&q=75&auto=format`
     : member.image;
 
   return (
     <div 
-      className="group w-full scale-in"
-      style={{ animationDelay: `${Math.min(index * 25, 300)}ms` }}
+      className="animate-fade-in"
+      style={{ animationDelay: `${Math.min(index * 50, 500)}ms` }}
     >
-      <div className="relative rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
-        <div className="aspect-[4/5] relative overflow-hidden">
+      <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden w-full max-w-[240px]">
+        <div className="relative aspect-[4/5] overflow-hidden">
           <img
-            src={optimizedImageSrc}
+            src={imageSrc}
             alt={member.name}
-            loading={index < 6 ? "eager" : "lazy"} // Only eagerly load first 6 images
+            loading={index < 6 ? "eager" : "lazy"}
             width="240"
             height="300"
-            className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+            className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
             decoding="async"
-            fetchPriority={index < 3 ? "high" : "auto"} // Corrected casing: fetchPriority instead of fetchpriority
+            fetchPriority={index < 3 ? "high" : "auto"}
           />
           {member.linkedin && (
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center pb-4">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
               <a
                 href={member.linkedin}
                 target="_blank"
@@ -52,9 +48,9 @@ const MemberCard = memo(({ member, index }: { member: ExecomMember; index: numbe
           )}
         </div>
         <div className="p-3 text-center">
-  <h3 className="text-base font-semibold mb-0.5 line-clamp-1">{member.name}</h3>
-  <p className="text-primary text-sm line-clamp-1">{member.role}</p>
-</div>
+          <h3 className="text-base font-semibold mb-0.5 truncate">{member.name}</h3>
+          <p className="text-primary text-sm truncate">{member.role}</p>
+        </div>
       </div>
     </div>
   );
@@ -63,149 +59,201 @@ const MemberCard = memo(({ member, index }: { member: ExecomMember; index: numbe
 MemberCard.displayName = 'MemberCard';
 
 /**
- * ExecomSection Component - Optimized with virtualization
- * - Only renders items that are likely to be in viewport
- * - Uses IntersectionObserver for efficient detection
- * - Implements progressive loading to reduce initial load time
+ * MemberGrid Component - Handles the layout of member cards
  */
-const ExecomSection = memo(({ title, members }: { title: string; members: ExecomMember[] }) => {
+const MemberGrid = memo(({ members }: { members: ExecomMember[] }) => {
   const [visibleItems, setVisibleItems] = useState<boolean[]>(
-    members.map((_, i) => i < 6) // Initial render for first 6 items only (reduced from 12)
+    members.map((_, i) => i < 4) // Only show first 4 initially
   );
-  const sectionRef = useRef<HTMLElement>(null);
-  
+  const gridRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    // Don't run observer for small lists (already fully visible)
-    if (members.length <= 6 || !sectionRef.current) return;
+    if (!gridRef.current) return;
     
-    const options = {
-      root: null,
-      rootMargin: '200px', // Reduced from 300px to be more conservative with loading
-      threshold: 0.1
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        // Load items progressively in batches to prevent jank
-        const loadNextBatch = () => {
-          setVisibleItems(prev => {
-            const nextBatch = [...prev];
-            let updated = false;
-            
-            // Load next 6 items that aren't already visible
-            for (let i = 0, count = 0; i < members.length && count < 6; i++) {
-              if (!nextBatch[i]) {
-                nextBatch[i] = true;
-                updated = true;
-                count++;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          // Gradually reveal all members with staggered timing
+          let delay = 0;
+          const interval = setInterval(() => {
+            setVisibleItems(prev => {
+              const nextVisibility = [...prev];
+              
+              // Find next invisible item
+              const nextIndex = nextVisibility.findIndex(visible => !visible);
+              if (nextIndex === -1) {
+                clearInterval(interval);
+                return nextVisibility;
               }
-            }
+              
+              nextVisibility[nextIndex] = true;
+              return nextVisibility;
+            });
             
-            // If we've loaded all items, disconnect the observer
-            if (!nextBatch.includes(false)) {
-              observer.disconnect();
-            } else if (updated) {
-              // Schedule next batch after a short delay
-              setTimeout(loadNextBatch, 300);
-            }
-            
-            return nextBatch;
-          });
-        };
-        
-        loadNextBatch();
-      }
-    }, options);
+            delay += 100;
+            if (delay > 1000) clearInterval(interval); // Safety timeout
+          }, 100);
+          
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '100px', threshold: 0.1 }
+    );
     
-    observer.observe(sectionRef.current);
-    
+    observer.observe(gridRef.current);
     return () => observer.disconnect();
   }, [members.length]);
 
+  // Calculate how many columns to use based on member count
+  const getColumnCount = () => {
+    const count = members.length;
+    if (count === 1) return 1;
+    if (count === 2) return 2;
+    if (count <= 4) return count;
+    return undefined; // Let CSS handle responsive behavior
+  };
+
   return (
-    <section className="mb-12" ref={sectionRef}>
-      <h2 className="text-2xl font-semibold mb-6 text-center slide-in">
+    <div ref={gridRef} className="w-full flex justify-center px-4">
+      <div 
+        className="flex flex-wrap justify-center gap-6"
+        style={{ 
+          maxWidth: getColumnCount() 
+            ? `${getColumnCount() * 240 + (getColumnCount() - 1) * 24}px` 
+            : '1200px'
+        }}
+      >
+        {members.map((member, index) => (
+          <div key={member.name} className="flex items-center justify-center">
+            {visibleItems[index] ? (
+              <MemberCard member={member} index={index} />
+            ) : (
+              <div 
+                className="bg-gray-100 rounded-lg w-[240px] aspect-[4/5] animate-pulse"
+                aria-hidden="true"
+              />
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+});
+
+MemberGrid.displayName = 'MemberGrid';
+
+/**
+ * ExecomSection Component - A section with title and member grid
+ */
+const ExecomSection = memo(({ title, members, priority = 'low' }: { 
+  title: string; 
+  members: ExecomMember[]; 
+  priority?: 'high' | 'medium' | 'low';
+}) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(priority === 'high');
+  
+  useEffect(() => {
+    if (!sectionRef.current || isVisible) return;
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px', threshold: 0.1 }
+    );
+    
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, [isVisible, priority]);
+
+  return (
+    <section 
+      ref={sectionRef} 
+      className="mb-16 opacity-0 animate-fade-in" 
+      style={{ 
+        animationFillMode: 'forwards',
+        animationPlayState: isVisible ? 'running' : 'paused' 
+      }}
+    >
+      <h2 className="text-2xl font-semibold mb-8 text-center animate-fade-in">
         {title}
       </h2>
-      <div className="flex justify-center px-4">
-  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 w-full max-w-6xl">
-    {members.map((member, index) => (
-      <div key={member.name} className="flex justify-center">
-        <div className="flex justify-center items-center w-full max-w-[240px]"> {/* Added flex and items-center here */}
-          {visibleItems[index] ? (
-            <MemberCard member={member} index={index} />
-          ) : (
-            <div 
-              className="w-full aspect-[4/5] bg-gray-100 rounded-lg animate-pulse"
-              aria-hidden="true"
-            />
-          )}
+      
+      {isVisible ? (
+        <MemberGrid members={members} />
+      ) : (
+        <div className="flex justify-center px-4">
+          <div className="flex flex-wrap justify-center gap-6">
+            {Array.from({ length: Math.min(members.length, 4) }).map((_, index) => (
+              <div 
+                key={index}
+                className="bg-gray-100 rounded-lg w-[240px] aspect-[4/5] animate-pulse"
+                aria-hidden="true"
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    ))}
-  </div>
-</div>
+      )}
     </section>
   );
 });
 
 ExecomSection.displayName = 'ExecomSection';
 
-// Define a type for section configuration to make adding new sections easier
-interface ExecomSectionConfig {
-  id: string;
-  title: string;
-  members: ExecomMember[];
-  priority?: 'high' | 'medium' | 'low'; // Controls loading priority
-}
-
 /**
- * Main Execom Component
- * - Uses a section configuration array to make adding new sections easier
- * - Implements proper animation schedule to avoid frame drops
- * - Uses content-visibility to improve rendering performance
+ * Main Execom Component - Renders the full execom page with all sections
  */
 const Execom = () => {
-  const { nodalOfficers,cio,epl,qo,finance,hiad,ht,si,hd,rc,bm,we,hc,ipr,itd } = execomMembers;
+  const { 
+    nodalOfficers, cio, epl, qo, finance, hiad, ht, si, hd, rc, bm, we, hc, ipr, itd 
+  } = execomMembers;
   
-  // Configure sections in an array for easy addition of new sections
-  const sections: ExecomSectionConfig[] = [
-    { id: 'nodal-officers', title: 'Nodal Officers', members: nodalOfficers, priority: 'high' },
-    { id: "Chief-Innovation-Officer", title: "Chief Innovation Officer", members:cio, priority: "low" },
-    { id: "Executive-Program-Lead", title: "Executive Program Lead", members: epl, priority: "low" },
-    { id: "Head-Quality-Operations", title: "Head of Quality & Operations", members:qo, priority: "low" },
-    { id: "Head-Finance", title: "Head of Finance", members:finance, priority: "low" },
-    { id: "Head-Innovation-Development", title: "Head of Innovation & Development", members: hiad, priority: "low" },
-    { id: "Head-Technology", title: "Head of Technology", members: ht, priority: "low" },
-    { id: "Head-Startup-Incubation", title: "Head of Startup Incubation", members: si, priority: "low" },
-    { id: "Head-Documentation", title: "Head of Documentation", members: hd, priority: "low" },
-    { id: "Head-Research-Collaboration", title: "Head of Research & Collaboration", members: rc, priority: "low" },
-    { id: "Head-Branding-Marketing", title: "Head of Branding & Marketing", members: bm, priority: "low" },
-    { id: "Head-Women-Entrepreneurship", title: "Head of Women Entrepreneurship", members: we, priority: "low" },
-    { id: "Head-Community", title: "Head of Community", members: hc, priority: "low" },
-    { id: "Head-IPR", title: "Head of IPR", members: ipr, priority: "low" },
-    { id: "Head-Internship-Talent-Development", title: "Head of Internship & Talent Development", members: itd, priority: "low" }
+  // Section configuration for easy management
+  const sections = [
+    { id: 'nodal-officers', title: 'Nodal Officers', members: nodalOfficers, priority: 'high' as const },
+    { id: 'cio', title: 'Chief Innovation Officer', members: cio },
+    { id: 'epl', title: 'Executive Program Lead', members: epl },
+    { id: 'qo', title: 'Head of Quality & Operations', members: qo },
+    { id: 'finance', title: 'Head of Finance', members: finance },
+    { id: 'hiad', title: 'Head of Innovation & Development', members: hiad },
+    { id: 'ht', title: 'Head of Technology', members: ht },
+    { id: 'si', title: 'Head of Startup Incubation', members: si },
+    { id: 'hd', title: 'Head of Documentation', members: hd },
+    { id: 'rc', title: 'Head of Research & Collaboration', members: rc },
+    { id: 'bm', title: 'Head of Branding & Marketing', members: bm },
+    { id: 'we', title: 'Head of Women Entrepreneurship', members: we },
+    { id: 'hc', title: 'Head of Community', members: hc },
+    { id: 'ipr', title: 'Head of IPR', members: ipr },
+    { id: 'itd', title: 'Head of Internship & Talent Development', members: itd },
   ];
-// To add a new section, simply add a new object to this array with id, title, and members
-  // Example: { id: 'new-section', title: 'New Section Title', members: newSectionMembers }
+
   return (
-    <div className="min-h-screen py-12 mt-16 fade-in will-change-opacity">
+    <div className="min-h-screen py-16 mt-16">
       <div className="container mx-auto">
-        <h1 className="text-3xl font-bold text-center mb-10 slide-in">
+        <h1 className="text-3xl font-bold text-center mb-16 animate-fade-in">
           Executive Committee
         </h1>
         
-        {/* Map through section configurations to render each section */}
-        {sections.map((section, index) => (
-          <div 
-            key={section.id}
-            style={{ 
-              contentVisibility: 'auto', 
-              containIntrinsicSize: section.members.length > 8 ? '0 1000px' : '0 500px'
-            }}
-          >
-            <ExecomSection title={section.title} members={section.members} />
-          </div>
+        {sections.map((section) => (
+          section.members.length > 0 && (
+            <div 
+              key={section.id}
+              style={{ 
+                contentVisibility: 'auto', 
+                containIntrinsicSize: '0 400px' 
+              }}
+            >
+              <ExecomSection 
+                title={section.title} 
+                members={section.members} 
+                priority={section.priority} 
+              />
+            </div>
+          )
         ))}
       </div>
     </div>
