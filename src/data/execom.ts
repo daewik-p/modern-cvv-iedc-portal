@@ -19,7 +19,7 @@ export interface ExecomMembers {
   rc: ExecomMember[];
   bm: ExecomMember[];
   we: ExecomMember[];
-  ipr: ExecomMember[];
+  ipr:ExecomMember[];
   hc: ExecomMember[];
   itd: ExecomMember[];
 }
@@ -29,6 +29,12 @@ export const execomMembers: ExecomMembers = {
   nodalOfficers: [
     {
       name: "Mrs. Anupama Jims",
+      role: "Nodal Officer",
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+      linkedin: "https://linkedin.com/in/anupama-jims",
+    },
+    {
+      name: "Dr. Savitesh M Sharma",
       role: "Nodal Officer",
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
       linkedin: "https://linkedin.com/in/example",
@@ -121,13 +127,13 @@ export const execomMembers: ExecomMembers = {
     },
     {
       name: "Potla Akhil",
-      role: "Branding & Marketing",
+      role: "Sub - Lead Branding & Marketing",
       image: "execom/akhil.jpg",
       linkedin: "http://www.linkedin.com/in/akhil0719"
     },
     {
       name: "M Rudra Varma",
-      role: "Branding & Marketing",
+      role: "Sub- Lead Branding & Marketing",
       image: " execom/rudra.jpg",
       linkedin: "https://www.linkedin.com/in/mrudravarmaa"
     }
@@ -141,7 +147,7 @@ export const execomMembers: ExecomMembers = {
     },
     {
       name: "Sona Monichen",
-      role: "Women Entrepreneurship",
+      role: "Sub - Lead Women Entrepreneurship",
       image: "execom/sona.JPG",
       linkedin: "https://www.linkedin.com/in/sona-monichen-23a830313/"
     }
@@ -171,7 +177,7 @@ export const execomMembers: ExecomMembers = {
     }, 
     {
       name: "Akshara U",
-      role: "Internship & Talent Development",
+      role: "Sub- Lead Internship & Talent Development",
       image: "execom/akshara.jpg",
       linkedin: ""
     }

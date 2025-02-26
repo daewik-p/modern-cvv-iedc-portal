@@ -234,8 +234,8 @@ const Execom = () => {
   return (
     <div className="min-h-screen py-16 mt-16">
       <div className="container mx-auto">
-        <h1 className="text-3xl font-bold text-center mb-16 animate-fade-in">
-          Executive Committee
+        <h1 className="text-5xl font-bold text-center mb-16 animate-fade-in">
+          Executive Committee 2025
         </h1>
         
         {sections.map((section) => (

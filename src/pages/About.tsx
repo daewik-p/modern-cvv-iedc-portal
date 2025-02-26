@@ -13,21 +13,27 @@ interface TimelineEvent {
 // Sample timeline data - replace with actual events
 const timelineEvents: TimelineEvent[] = [
   {
-    date: "April 2024",
+    date: "April 15, 2024",
     title: "IEDC Establishment",
     description: "Foundation of Innovation and Entrepreneurship Development Centre at Chinmaya Vishwa Vidhyapeeth",
     icon: <Sparkles className="w-6 h-6" />,
   },
   {
-    date: "November 2024",
+    date: "November 10, 2024",
     title: "Catalyst 2024",
     description: "Our first idea pitching competition in collaboration with IIC",
     icon: <Trophy className="w-6 h-6" />,
   },
   {
-    date: "January 2025",
+    date: "January 31, 2025",
     title: "Executive Committee 2k25",
     description: "New Lead selection and team formation",
+    icon: <Users className="w-6 h-6" />,
+  },
+  {
+    date: "February 19, 2025",
+    title: "RSET IEDC x CVV IEDC",
+    description: "Collaboration with Rajagiri School of Engineering and Technology",
     icon: <Users className="w-6 h-6" />,
   }
 ];
@@ -84,7 +90,7 @@ const About = () => {
                   {event.icon}
                 </div>
                 {index !== timelineEvents.length - 1 && (
-                  <div className="absolute top-12 left-1/2 transform -translate-x-1/2 w-0.5 h-16 bg-gray-200" />
+                  <div className="absolute top-12 left-1/2 transform -translate-x-1/2 w-0.5 h-16 bg-primary" />
                 )}
               </div>
               <div className="w-2/3 pl-8">

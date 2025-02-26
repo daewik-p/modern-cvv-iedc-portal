@@ -18,12 +18,11 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center">
             <img 
-              src="/IEDC LOGO FINAL.svg" 
+              src="/website-02.svg" 
               alt="CVV IEDC Logo" 
               width={96}
               height={52}
-              className="h-8 w-auto transform-gpu hover:brightness-110 transition-all duration-300"
-              style={{ filter: 'invert(0.8) sepia(0.9) saturate(1.5) hue-rotate(190deg) brightness(0.5)' }}
+              className="h-12 w-auto transform-gpu hover:brightness-110 transition-all duration-300"
             />
           </Link>
           <div className="flex space-x-8">
