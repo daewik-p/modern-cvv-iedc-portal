@@ -143,19 +143,19 @@ const Index = () => {
               {
                 icon: Instagram,
                 label: "Instagram",
-                href: "https://instagram.com/cvv_iedc",
+                href: "https://instagram.com/cvviedc/",
                 color: "hover:text-pink-500",
               },
               {
                 icon: Linkedin,
                 label: "LinkedIn",
-                href: "https://linkedin.com/company/cvv-iedc",
+                href: "https://www.linkedin.com/company/cvv-iedc-2024",
                 color: "hover:text-blue-600",
               },
               {
                 icon: Youtube,
                 label: "YouTube",
-                href: "https://youtube.com/@cvv_iedc",
+                href: "https://youtube.com/@CVVIEDC",
                 color: "hover:text-red-600",
               },
             ].map((social, index) => (

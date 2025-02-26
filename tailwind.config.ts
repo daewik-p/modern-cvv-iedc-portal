@@ -30,7 +30,7 @@ export default {
           foreground: "#000000", 
         },
         secondary: {
-          DEFAULT: "#D8FFE9", // Mint Green
+          DEFAULT: "#000000",
           foreground: "#000000",
         },
         accent: {
