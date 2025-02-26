@@ -6,9 +6,8 @@ import { Link } from "react-router-dom";
 
 // Hero background images - Add new images to /public/hero/ directory
 const heroImages = [
-  "/hero/hero1.webp",
-  "/hero/hero2.webp",
-  "/hero/hero3.webp"
+  "/hero/hero1.png",
+  "/hero/hero2.jpg",
 ];
 
 const Index = () => {
