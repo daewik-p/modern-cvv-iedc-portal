@@ -1,3 +1,4 @@
+
 import { Linkedin } from "lucide-react";
 import { type ExecomMember, execomMembers } from "@/data/execom";
 import { memo, useState, useEffect, useRef } from "react";
