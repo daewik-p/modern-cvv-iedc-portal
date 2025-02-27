@@ -14,9 +14,8 @@ export default defineConfig(({ mode }) => ({
     },
   },
   plugins: [
-    react(),
-    mode === 'development' && componentTagger(),
-  ].filter(Boolean),
+    react()],
+  base: "/modern-cvv-iedc-portal",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
