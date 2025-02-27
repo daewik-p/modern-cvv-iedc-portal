@@ -31,13 +31,13 @@ export const execomMembers: ExecomMembers = {
       name: "Mrs. Anupama Jims",
       role: "Nodal Officer",
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-      linkedin: "https://linkedin.com/in/example",
+      linkedin: "https://www.linkedin.com/in/anupamajims",
     },
     {
       name: "Dr. Savitesh M Sharma",
       role: "Nodal Officer",
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-      linkedin: "https://linkedin.com/in/example",
+      image: "execom/saviteshji.png",
+      linkedin: "https://www.linkedin.com/in/savitesh-sharma-383a115",
     },
   ],
   cio: [
@@ -166,7 +166,7 @@ export const execomMembers: ExecomMembers = {
       name: "Gowri Gopika",
       role: "Head of IPR",
       image: "execom/gowri.jpg",
-      linkedin: "https://www.linkedin.com/in/gowri-gopika-"
+      linkedin: "http://www.linkedin.com/in/gowri-gopika-041bb0296"
     } 
   ],
   itd: [

@@ -1,6 +1,5 @@
-
 import { motion } from "framer-motion";
-import { CalendarDays, Trophy, Users, Sparkles } from "lucide-react";
+import { CalendarDays, Trophy, Users, Sparkles, HeartHandshake } from "lucide-react";
 
 // Timeline data structure
 interface TimelineEvent {
@@ -13,7 +12,7 @@ interface TimelineEvent {
 // Sample timeline data - replace with actual events
 const timelineEvents: TimelineEvent[] = [
   {
-    date: "April 15, 2024",
+    date: "March 19, 2024",
     title: "IEDC Establishment",
     description: "Foundation of Innovation and Entrepreneurship Development Centre at Chinmaya Vishwa Vidhyapeeth",
     icon: <Sparkles className="w-6 h-6" />,
@@ -34,7 +33,7 @@ const timelineEvents: TimelineEvent[] = [
     date: "February 19, 2025",
     title: "RSET IEDC x CVV IEDC",
     description: "Collaboration with Rajagiri School of Engineering and Technology",
-    icon: <Users className="w-6 h-6" />,
+    icon: <HeartHandshake className="w-6 h-6" />,
   }
 ];
 
@@ -94,9 +93,11 @@ const About = () => {
         {/* Mission Statement */}
         <div className="max-w-3xl mx-auto mb-16">
           <p className="text-lg text-gray-700 text-center leading-relaxed">
-            The Innovation and Entrepreneurship Development Centre (IEDC) is a flagship initiative 
-            to promote innovation and entrepreneurship among the student community. We aim to foster 
-            innovative thinking and develop entrepreneurial skills among students.
+          The Innovation and Entrepreneurship Development Cell (IEDC) at CVV, established in April 2024, is a 
+          vibrant platform fostering creativity, innovation, and entrepreneurial spirit among students. Guided 
+          by a vision to empower young minds, we organize workshops, contests, and hands-on activities to inspire 
+          innovation and sustainable solutions. With a collaborative team, we aim to bridge the gap between 
+          academics and real-world challenges, nurturing future leaders and changemakers.
           </p>
         </div>
 
