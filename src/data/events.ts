@@ -60,11 +60,11 @@ export const pastEvents: Event[] = [
   {
     id: "cat24",
     title: "Catalyst 2024",
-    date: "November 10, 2024",
+    date: "November 08, 2024",
     time: "2:00 PM",
     location: "LP - A325",
     image: "Events/catalyst.jpg",
     category: "Ideathon",
-    description: "Catalyst 2024 - Igniting Innovation at CVV\n\nCatalyst 2024, organized by the Innovation and Entrepreneurship Development Center (IEDC) at CVV, provided a dynamic platform for students to brainstorm, pitch, and refine startup ideas.\n\nEvent Highlights:\n- Idea Pitching: 11 teams presented innovative solutions.\n- Expert Feedback: Judges provided insights.\n- Collaborative Learning: Hands-on mentorship and networking.\n\nCatalyst 2024 reinforced CVV's commitment to fostering an entrepreneurial mindset.",
+    description: "Catalyst 2024, organized by the Innovation and Entrepreneurship Development Center (IEDC) at CVV, was an ideathon designed to foster innovation and entrepreneurial thinking among students. Held on November 8, 2024, the event provided a platform for participants to pitch creative startup ideas addressing real-world challenges. With 11 teams from various disciplines, the competition featured insightful mentorship sessions, expert feedback, and collaborative discussions that helped refine and shape promising business concepts. \n\n\n\nGuided by an esteemed panel of judges, including Dr. Praveen K M and Dr. Savitesh Madhulika Sharma, the participants received valuable insights to improve and scale their ideas. The success of Catalyst 2024 was made possible by the dedication of the IEDC team, faculty mentors, and student coordinators, with Krishna K and Rosemary Tomy playing key leadership roles. The event reinforced CVV's commitment to fostering an entrepreneurial ecosystem, bridging academia with industry, and inspiring students to turn ideas into impactful startups.",
   },
 ];
