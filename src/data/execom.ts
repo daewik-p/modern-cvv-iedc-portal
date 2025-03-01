@@ -30,7 +30,7 @@ export const execomMembers: ExecomMembers = {
     {
       name: "Mrs. Anupama Jims",
       role: "Nodal Officer",
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+      image: "execom/anupamaji.jpg",
       linkedin: "https://www.linkedin.com/in/anupamajims",
     },
     {
