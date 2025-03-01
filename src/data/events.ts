@@ -15,7 +15,7 @@ export const upcomingEvents: Event[] = [
   {
     id: "GeeksandGiggles",
     title: "Geeks and Giggles : Tech Meme Competition",
-    date: "March 4, 2024",
+    date: "March 4, 2025",
     time: "4:00 PM",
     location: "Online",
     image: "Events/techmeme.webp",
@@ -30,7 +30,7 @@ export const pastEvents: Event[] = [
   {
     id: "talesontape",
     title: "Tales on Tape : Vlogging Competition",
-    date: "February 6-20, 2024",
+    date: "February 6-20, 2025",
     time: "3:00 PM",
     location: "Online",
     image: "Events/tot.webp",
@@ -40,7 +40,7 @@ export const pastEvents: Event[] = [
   {
     id: "rajagiri",
     title: "Rajagiri IEDC Visit",
-    date: "February 10, 2024",
+    date: "February 10, 2025",
     time: "4:30 PM",
     location: "IEDC-RSET, Rajagiri Valley, Ernakulam",
     image: "Events/rajagiri.jpg",
@@ -50,7 +50,7 @@ export const pastEvents: Event[] = [
   {
     id: "brandyou_01",
     title: "Brand You : LinkedIn Mastery Workshop",
-    date: "February 10, 2024",
+    date: "February 10, 2025",
     time: "3:00 PM",
     location: "LP - A404",
     image: "Events/brand.jpg",
