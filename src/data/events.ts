@@ -65,18 +65,6 @@ export const pastEvents: Event[] = [
     location: "LP - A325",
     image: "Events/catalyst.jpg",
     category: "Ideathon",
-    description: `Catalyst 2024 - Igniting Innovation at CVV
-
-Catalyst 2024, organized by the Innovation and Entrepreneurship Development Center (IEDC) at CVV, provided a dynamic platform for students to brainstorm, pitch, and refine startup ideas aimed at solving real-world challenges. Held on November 8, 2024, the event brought together aspiring entrepreneurs, expert mentors, and a distinguished panel of judges to foster innovation and critical thinking.
-
-Event Highlights:
-- Idea Pitching: 11 teams from IST, EGCS, and PPSH presented innovative solutions ranging from sustainable designs to tech-driven services.
-- Expert Feedback: Judges, including Dr. Praveen K M and Dr. Savitesh Madhulika Sharma, provided insights to help teams refine and scale their ideas.
-- Collaborative Learning: Participants engaged in hands-on discussions, mentorship sessions, and networking opportunities to strengthen their entrepreneurial vision.
-
-Acknowledgments:
-The success of Catalyst 2024 was made possible by the dedication of the IEDC media team, faculty mentors, and student coordinators. Special thanks to Ms. Anupama Jims and Dr. Savitesh M. Sharma, whose guidance shaped the event. Student leaders Krishna K and Rosemary Tomy played a crucial role in organizing and ensuring a seamless experience for all participants.
-
-Catalyst 2024 reinforced CVV's commitment to fostering an entrepreneurial mindset, bridging academia with industry, and empowering students to transform ideas into impactful startups. As the journey continues, the momentum from this event will carry forward into future editions, driving innovation and creativity.`,
+    description: "Catalyst 2024 - Igniting Innovation at CVV\n\nCatalyst 2024, organized by the Innovation and Entrepreneurship Development Center (IEDC) at CVV, provided a dynamic platform for students to brainstorm, pitch, and refine startup ideas.\n\nEvent Highlights:\n- Idea Pitching: 11 teams presented innovative solutions.\n- Expert Feedback: Judges provided insights.\n- Collaborative Learning: Hands-on mentorship and networking.\n\nCatalyst 2024 reinforced CVV's commitment to fostering an entrepreneurial mindset.",
   },
 ];
