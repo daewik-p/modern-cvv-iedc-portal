@@ -79,8 +79,10 @@ const EventDetail = () => {
             </div>
           </div>
 
-          {isUpcoming && (
-            <Button className="w-full md:w-auto">Register Now</Button>
+          {isUpcoming && event.registerLink && (
+            <a href={event.registerLink} target="_blank" rel="noopener noreferrer">
+              <Button className="w-full md:w-auto">Register Now</Button>
+          </a>
           )}
 
           <div className="prose prose-lg max-w-none">
