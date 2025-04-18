@@ -36,7 +36,7 @@ export const execomMembers: ExecomMembers = {
     {
       name: "Dr. Savitesh M Sharma",
       role: "Nodal Officer",
-      image: "execom/saviteshji.png",
+      image: "execom/saviteshji.jpg",
       linkedin: "https://www.linkedin.com/in/savitesh-sharma-383a115",
     },
   ],
@@ -149,7 +149,7 @@ export const execomMembers: ExecomMembers = {
     {
       name: "Sona Monichen",
       role: "Sub-Lead of Women Entrepreneurship",
-      image: "execom/sona.JPG",
+      image: "execom/sona.jpg",
       linkedin: "https://www.linkedin.com/in/sona-monichen-23a830313/"
     }
   ],
