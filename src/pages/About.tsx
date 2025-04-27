@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { CalendarDays, Trophy, Users, Sparkles, HeartHandshake } from "lucide-react";
+import { CalendarDays, Trophy, Users, Sparkles, HeartHandshake, PartyPopper } from "lucide-react";
 
 // Timeline data structure
 interface TimelineEvent {
@@ -34,6 +34,12 @@ const timelineEvents: TimelineEvent[] = [
     title: "RSET IEDC x CVV IEDC",
     description: "Collaboration with Rajagiri School of Engineering and Technology",
     icon: <HeartHandshake className="w-6 h-6" />,
+  },
+  {
+    date: "March 07, 2025",
+    title: "Aarohi : Ascending Beyond Limits",
+    description: "International Women's Day Celebration",
+    icon: <PartyPopper className="w-6 h-6" />,
   }
 ];
 

@@ -209,26 +209,15 @@ ExecomSection.displayName = 'ExecomSection';
  */
 const Execom = () => {
   const { 
-    nodalOfficers, cio, epl, qo, finance, hiad, ht, si, hd, rc, bm, we, hc, ipr, itd 
+    nodalOfficers,iph, crl, sl
   } = execomMembers;
   
   // Section configuration for easy management
   const sections = [
     { id: 'nodal-officers', title: 'Nodal Officers', members: nodalOfficers, priority: 'high' as const },
-    { id: 'cio', title: 'Chief Innovation Officer', members: cio },
-    { id: 'epl', title: 'Executive Program Lead', members: epl },
-    { id: 'qo', title: 'Quality & Operations', members: qo },
-    { id: 'finance', title: 'Finance And Strategy', members: finance },
-    { id: 'hiad', title: 'Innovation & Development', members: hiad },
-    { id: 'ht', title: 'Technology', members: ht },
-    { id: 'si', title: 'Startup and Incubation', members: si },
-    { id: 'hd', title: 'Documentation and Institutional Records', members: hd },
-    { id: 'rc', title: 'Research & Collaboration', members: rc },
-    { id: 'bm', title: 'Branding & Marketing', members: bm },
-    { id: 'we', title: 'Women Entrepreneurship', members: we },
-    { id: 'hc', title: 'Community and Collaboration', members: hc },
-    { id: 'ipr', title: 'Intellectual Property Right', members: ipr },
-    { id: 'itd', title: 'Internship & Talent Development', members: itd },
+    { id: 'iph', title: 'Innovation & Program Heads', members: iph, priority: 'medium' as const },
+    { id: 'crl', title: 'Corresponding Leads', members: crl },
+    { id: 'sl', title: 'Sub-Leads', members: sl }
   ];
 
   return (
