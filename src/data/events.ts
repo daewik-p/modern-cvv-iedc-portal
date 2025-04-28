@@ -21,7 +21,7 @@ export const pastEvents: Event[] = [
     title: "Aarohi : Ascending Beyond Limits",
     date: "March 7, 2025",
     time: "9.45 AM",
-    location: "Offline",
+    location: "LP Atrium",
     image: "Events/aarohi.webp",
     category: "Celebration",
     description: `CVV-IEDC and IIC hosted AAROHI: Ascending Beyond Limits at the LP Atrium, bringing together over 220 participants for an inspiring Women’s Day celebration. Centered around the theme "Empower, Inspire, Elevate," the event created a vibrant platform to honor women's achievements, encourage leadership, and drive conversations on gender equality. The day began with a ceremonial lamp lighting, followed by a warm welcome from Dr. Sunitha Grandhee and a presidential address by Prof. Ajay Kapoor, who emphasized the role of education in women's empowerment. Ms. Sujata Madhav Chandran, Global Head at TCS, delivered the inaugural address, highlighting the importance of fostering inclusive ecosystems and recognizing women’s contributions in every sphere.
@@ -36,7 +36,7 @@ With the efforts of faculty coordinator Dr. Uma Narayanan and student coordinato
     title: "She Leads : Women in Business",
     date: "March 7, 2025",
     time: "11.45 AM",
-    location: "Offline",
+    location: "LP Atrium",
     image: "Events/sheleads.webp",
     category: "Talk Session",
     description: `As part of the Aarohi 2025 celebrations, CVV-IEDC hosted SheLeads: Women in Business, an inspiring offline session on March 7, 2025, bringing together 90 participants eager to learn and grow. The session featured a powerful talk by Dr. Usha Narayanan, who drew from her rich background in dentistry, psychology, and entrepreneurship to offer a holistic perspective on women’s leadership journeys. Addressing critical themes such as financial independence, decision-making, resilience, and emotional intelligence, Dr. Usha captivated the audience with real-life examples and practical insights.
@@ -50,7 +50,7 @@ Expertly coordinated by Dr. Uma Narayanan and student coordinator Ms. Gowri Gopi
     title: "Women in Tech : Empowering Future",
     date: "March 7, 2025",
     time: "10.45 AM",
-    location: "Offline",
+    location: "LP Atrium",
     image: "Events/womenintech.webp",
     category: "Talk Session",
     description: `As part of the Aarohi 2025 celebrations, CVV-IEDC organized the impactful session Women in Tech: Powering the Future on March 7, 2025, gathering 90 participants for an afternoon of inspiration and learning. The event featured Ms. Raji P, a dynamic tech entrepreneur and advocate for women in STEM, who shared her powerful journey of breaking barriers and leveraging technology for social good. Through stories of her ventures like Village Zone—an e-commerce platform empowering rural women—and Companion SOS—a mobile safety app—Ms. Raji illustrated how innovation can create meaningful change.
@@ -64,7 +64,7 @@ Expertly coordinated by Dr. Uma Narayanan and student coordinator Ms. Bharathi D
     title: "Exit or Extinct : Escape Room Challenge",
     date: "March 7, 2025",
     time: "02:00 PM",
-    location: "Offline",
+    location: "LP Academic Block",
     image: "Events/exitorextinct.webp",
     category: "Competition",
     description: `As part of the Aarohi Women's Day celebrations, CVV-IEDC and IIC hosted an exciting escape room competition titled Exit or Extinct at the LP Academic Block. Designed to challenge the participants' problem-solving skills, logical reasoning, and teamwork under pressure, the event offered a thrilling and dynamic experience. Set against the backdrop of an imagined extinction event, participants were tasked with navigating through a series of intricate puzzles, coded messages, and physical tasks, all while racing against time.
@@ -78,7 +78,7 @@ The event was expertly coordinated by Dr. Uma Narayanan, along with student coor
     title: "EmpowHER : Problem Solving Competition",
     date: "March 7, 2025",
     time: "02:00 PM",
-    location: "Offline",
+    location: "LP - A212",
     image: "Events/empowher.webp",
     category: "Competition",
     description: `As part of the Aarohi Women’s Day celebrations, CVV-IEDC and IIC organized EmpowHER, a dynamic problem-solving competition held on March 7, 2025, at LP – A-212. Designed to spark innovation rooted in empathy, the event challenged participants to address real-world challenges faced by women through tech-enabled and inclusive solutions. Working in small, focused teams, students engaged deeply with issues affecting women’s everyday lives, brainstorming creative, human-centered ideas under the guidance of mentors and pitching their solutions before an expert jury comprising Mr. Sharath from the Department of Mechanical Engineering and Mr. Arghyadeep Gosh from the Department of Computer Science, CVV-IST.
@@ -92,7 +92,7 @@ With expert coordination by Dr. Uma Narayanan, along with student leaders Ms. So
     title: "Battle of Brains : Quiz Competition",
     date: "March 7, 2025",
     time: "02:00 PM",
-    location: "Offline",
+    location: "LP Atrium",
     image: "Events/battleofbrains.webp",
     category: "Competition",
     description: `As part of the vibrant Aarohi 2025 Women's Day celebrations, CVV-IEDC and IIC hosted Battle of Brains, an engaging quiz competition on March 7, 2025, at the LP Atrium. Designed to challenge participants’ knowledge and critical thinking, the event explored themes around women-led innovations, gender equality, and the transformative contributions of women changemakers worldwide. Participants, organized into spirited teams, navigated through multiple thematic rounds that celebrated the achievements of trailblazing women, historic milestones, and the ongoing journey toward equality.
