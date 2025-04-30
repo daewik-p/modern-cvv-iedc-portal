@@ -1,27 +1,29 @@
-
 import { motion } from "framer-motion";
 import { ArrowRight, Users, Target, Lightbulb, Instagram, Linkedin, Youtube } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-// Hero background images - Add new images to /public/hero/ directory
+// Hero background images/videos - Add new assets to /public/hero/ directory
 const heroImages = [
-  "/hero/hero1.png",
-  "/hero/hero2.jpg",
+ // "/hero/hero1.png",
+ // "/hero/hero2.jpg",
+  "/hero/hero4.mp4",
 ];
 
 const Index = () => {
-  // State for current hero image index
+  // State for current hero media index
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     // Preload images for smooth transitions
     heroImages.forEach(src => {
-      const img = new Image();
-      img.src = src;
+      if (!src.endsWith(".mp4")) {
+        const img = new Image();
+        img.src = src;
+      }
     });
 
-    // Rotate images every 5 seconds
+    // Rotate media every 5 seconds
     const interval = setInterval(() => {
       setCurrentImageIndex(prev => (prev + 1) % heroImages.length);
     }, 5000);
@@ -38,19 +40,31 @@ const Index = () => {
   };
 
   return (
-    <motion.div
-      {...fadeInAnimation}
-      className="min-h-screen"
-    >
+    <motion.div {...fadeInAnimation} className="min-h-screen">
       {/* Hero Section with rotating background */}
-      <section className="relative h-[80vh] flex items-center justify-center">
-        {/* Background Image with overlay */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000"
-          style={{
-            backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url(${heroImages[currentImageIndex]})`,
-          }}
-        />
+      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        {/* Background Media */}
+        {heroImages[currentImageIndex].endsWith(".mp4") ? (
+          <video
+            key={heroImages[currentImageIndex]} // Re-render video when source changes
+            className="absolute inset-0 w-full h-full object-cover"
+            src={heroImages[currentImageIndex]}
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        ) : (
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000"
+            style={{
+              backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url(${heroImages[currentImageIndex]})`,
+            }}
+          />
+        )}
+
+        {/* Overlay to slightly darken the background */}
+        <div className="absolute inset-0 bg-black/30" />
 
         {/* Hero Content */}
         <div className="container mx-auto px-4 text-center relative z-10">
