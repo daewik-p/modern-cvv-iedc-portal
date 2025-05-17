@@ -38,12 +38,23 @@ const EventCard = ({ event }: { event: Event }) => {
             <span>{event.location}</span>
           </div>
         </div>
-        <Link
-          to={isUpcoming ? `/register/${event.id}` : `/events/${event.id}`}
-          className="block w-full bg-primary text-white text-center py-2 rounded-lg hover:bg-secondary transition-colors duration-300"
-        >
-          {isUpcoming ? "Register Now" : "View Details"}
-        </Link>
+        {isUpcoming ? (
+  <a
+    href={event.registerLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="block w-full bg-primary text-white text-center py-2 rounded-lg hover:bg-secondary transition-colors duration-300"
+  >
+    Register Now
+  </a>
+) : (
+  <Link
+    to={`/events/${event.id}`}
+    className="block w-full bg-primary text-white text-center py-2 rounded-lg hover:bg-secondary transition-colors duration-300"
+  >
+    View Details
+  </Link>
+)}
       </div>
     </div>
   );
@@ -52,7 +63,9 @@ const EventCard = ({ event }: { event: Event }) => {
 const EventGrid = ({ events }: { events: Event[] }) => (
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     {events.map((event) => (
-      <EventCard key={event.id} event={event} />
+      <div key={event.id}>
+        <EventCard event={event} />
+      </div>
     ))}
   </div>
 );

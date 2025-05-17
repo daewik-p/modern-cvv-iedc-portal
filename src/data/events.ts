@@ -12,7 +12,18 @@ export interface Event {
 }
 
 export const upcomingEvents: Event[] = [
-  
+  {
+    id: "Catalyst2025",
+    title: "Catalyst Phase 2",
+    date: "June 9, 2025",
+    time: "2.00 PM",
+    location: "Online-Zoom",
+    image: "Events/CATALYST.webp",
+    category: "Competition",
+    registerLink: "https://forms.gle/6Vh6cxziRznVqox19",
+    description: `Catalyst 2025, organized by the Innovation and Entrepreneurship Development Center (IEDC) at CVV, is an ideathon designed to foster innovation and entrepreneurial thinking among students. The event provides a platform for participants to pitch creative startup ideas addressing real-world challenges. With teams from various disciplines, the competition features insightful mentorship sessions, expert feedback, and collaborative discussions that help refine and shape promising business concepts.
+`,
+  }
 ];
 
 export const pastEvents: Event[] = [
