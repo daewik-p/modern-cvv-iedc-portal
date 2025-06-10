@@ -125,10 +125,10 @@ export const execomMembers: ExecomMembers = {
       linkedin: ""
     },
     {
-      name: "M Rudra Varma",
-      role: "Sub-Lead of Branding & Marketing",
-      image: " execom/rudra.jpg",
-      linkedin: "https://www.linkedin.com/in/mrudravarmaa"
+      name: "Amrutha S Nair",
+      role: "Sub-Lead of Research & Collaboration",
+      image: "execom/amrutha.jpg",
+      linkedin: "https://www.linkedin.com/in/amruthasn"
     },
     {
       name: "Nakshathra S Nair",
@@ -136,13 +136,6 @@ export const execomMembers: ExecomMembers = {
       image: "execom/nakshathra.jpg",
       linkedin: "https://www.linkedin.com/in/nakshathranaksh"
     },
-    {
-      name: "Potla Akhil",
-      role: "Sub-Lead of Branding & Marketing",
-      image: "execom/akhil.jpg",
-      linkedin: "http://www.linkedin.com/in/akhil0719"
-    },
-    
     {
       name: "Sona Monichen",
       role: "Sub-Lead of Women Entrepreneurship",
