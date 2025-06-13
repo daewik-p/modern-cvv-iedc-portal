@@ -13,13 +13,13 @@ export interface Event {
 
 export const upcomingEvents: Event[] = [
   {
-    id: "Catalyst2025",
-    title: "Catalyst Phase 2",
-    date: "June 9, 2025",
+    id: "cat2025",
+    title: "Catalyst 2",
+    date: "July 9, 2025",
     time: "2.00 PM",
-    location: "Online-Zoom",
+    location: "Offline",
     image: "Events/CATALYST.webp",
-    category: "Competition",
+    category: "Ideathon",
     registerLink: "https://forms.gle/6Vh6cxziRznVqox19",
     description: `Catalyst 2025, organized by the Innovation and Entrepreneurship Development Center (IEDC) at CVV, is an ideathon designed to foster innovation and entrepreneurial thinking among students. The event provides a platform for participants to pitch creative startup ideas addressing real-world challenges. With teams from various disciplines, the competition features insightful mentorship sessions, expert feedback, and collaborative discussions that help refine and shape promising business concepts.
 `,
@@ -167,5 +167,24 @@ The success of the competition was largely attributed to the dedication of the I
     image: "Events/catalyst.jpg",
     category: "Ideathon",
     description: "Catalyst 2024, organized by the Innovation and Entrepreneurship Development Center (IEDC) at CVV, was an ideathon designed to foster innovation and entrepreneurial thinking among students. Held on November 8, 2024, the event provided a platform for participants to pitch creative startup ideas addressing real-world challenges. With 11 teams from various disciplines, the competition featured insightful mentorship sessions, expert feedback, and collaborative discussions that helped refine and shape promising business concepts. \n\n\n\nGuided by an esteemed panel of judges, including Dr. Praveen K M and Dr. Savitesh Madhulika Sharma, the participants received valuable insights to improve and scale their ideas. The success of Catalyst 2024 was made possible by the dedication of the IEDC team, faculty mentors, and student coordinators, with Krishna K and Rosemary Tomy playing key leadership roles. The event reinforced CVV's commitment to fostering an entrepreneurial ecosystem, bridging academia with industry, and inspiring students to turn ideas into impactful startups.",
+  },{
+    id: "logomaking",
+    title: "IEDC Logo Making Competition",
+    date: "October 29, 2024",
+    time: "04:00 PM",
+    location: "Online",
+    image: "Events/templogo.png",
+    category: "Online",
+    description: "The IEDC Logo Making Contest, conducted in October 2024 by the Innovation and Entrepreneurship Development Centre (IEDC) of Chinmaya Vishwa Vidyapeeth, aimed to engage students in redefining the visual identity of the innovation cell. With the objective of reflecting IEDC’s core values—creativity, innovation, leadership, and transformation—the contest invited students to craft a logo that blends design thinking with institutional ethos.The competition was conducted online, with information disseminated through campus-wide emails, WhatsApp groups, and physical posters. A total of six participants registered for the contest, each submitting an original logo design along with a brief write-up explaining their concept. The submissions showcased a diverse range of design styles—from abstract representations to minimalist and symbolic illustrations—each offering a unique interpretation of innovation and entrepreneurship.After an initial round of internal review, the top six entries were shortlisted and presented to a campus-based evaluation panel. The winning logo was selected for its dynamic and forward-looking representation of innovation, successfully combining symbolic meaning with modern design elements. In addition to the winner, two entries received special mentions for their creativity and effort. The winning logo has now been officially adopted as the emblem for CVV-IEDC, and will be featured across all official communications, branding materials, and merchandise—symbolizing the spirit of student-driven innovation. This initiative was more than a design contest; it was a creative celebration of student participation and collaborative identity-building. It empowered students to co-create the face of their innovation ecosystem, highlighted the significance of design in effective communication, and nurtured a culture of design thinking at CVV. The event further reinforced IEDC’s commitment to inclusive innovation—by students, for students.",
+  },
+  {
+    id: "cluster1",
+    title: "IEDC Cluster Meeting ",
+    date: "September 25, 2024",
+    time: "09:00 AM",
+    location: "Adi Shankara Institute of Engineering and Technology, Kalady",
+    image: "Events/cluster1.jpg",
+    category: "Collaboration",
+    description: "The IEDC Ernakulam District Cluster Meeting 2024, organized by Kerala Startup Mission, was held on 25th September 2024 at Adi Shankara Institute of Science and Technology, Kalady. The event brought together over 270 participants, including students, faculty members, and innovation leaders from more than 80 colleges across the district. With the central theme of “IEDC 2.0 and IEDC Summit '24,” the meeting aimed to foster collaboration across institutions, promote an entrepreneurial mindset among students, and strengthen the ecosystem of Innovation and Entrepreneurship Development Centers (IEDCs).The day began with a formal inaugural session. Mr. Eldose K.T. from Adi Shankara welcomed the gathering, highlighting the milestones of their IEDC since its inception in 2015, including its recognition as a Technology Business Incubator (TBI) in 2019 and its financial growth to ₹24 lakhs by 2024. In the presidential address, Mr. K. Anand, Chief Trustee of Adi Shankara, spoke on the importance of innovation and entrepreneurship in shaping the future, encouraging both faculty and students to leverage the resources of KSUM and IEDC. Dr. M.S. Murali, Principal of the institute, reinforced the institution’s dedication to interdisciplinary innovation and startup culture. A powerful keynote was delivered by Mr. N.P. Antony, CEO of Pavizham Healthier Diet Pvt. Ltd., who shared inspiring entrepreneurial lessons drawn from his personal journey, emphasizing the importance of patience, resilience, and hope. Felicitations were offered by Mr. Bergin S. Russel, Assistant Manager at Kerala Startup Mission, who praised the host institute’s initiatives, and Mr. Ajay Basil, TBI Manager, who discussed the growth and support mechanisms of the incubator. The inaugural ceremony concluded with a vote of thanks by Mr. Eldhose P. Sim, Nodal Officer of Adi Shankara IEDC.Participants then toured the institute’s 15,000 sqft Technology Business Incubator, home to six startups, three of which are run by alumni. This tour provided practical exposure to a working startup ecosystem and offered valuable insights into incubation and innovation support. A major highlight of the event was the workshop on “IEDC 2.0” conducted by Mr. Bergin S. Russel. This interactive session began with introductions from nodal officers and students across the participating institutions. Mr. Russel addressed several pressing concerns, including the stagnation in final-year project innovation, and laid out upcoming strategies by KSUM to tackle such issues. He also emphasized the need for cross-disciplinary collaboration, underlining the critical role of IEDCs in enabling such innovation.The event proved to be an enriching experience for all attendees, offering deep insights into the entrepreneurial ecosystem and sparking inspiration through real-world examples and strategic discussions. The Cluster Meeting successfully facilitated knowledge sharing and collaborative ideation, marking a key milestone in the IEDC journey in Kerala. Representing IEDC-CVV at the event were Dr. Savitesh M Sharma (Nodal Officer), Mr. Krishna K (Creative and Innovation Lead), and Mrs. Rosemary Tomy (Student Lead).",
   },
 ];
