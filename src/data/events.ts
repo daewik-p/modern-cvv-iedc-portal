@@ -13,11 +13,27 @@ export interface Event {
 
 export const upcomingEvents: Event[] = [
   {
+    id: "ideaverse",
+    title: "IDEAverse",
+    date: "July 02, 2025",
+    time: "03.00 PM",
+    location: "LP A-217",
+    image: "Events/ideaverse.webp",
+    category: "Icebreaker",
+    description: `IDEAverse is a dynamic brainstorming and ice-breaking session designed 
+exclusively for IEDC team members including the Executive Committee, Media, 
+Create, and Orbit teams. This interactive gathering aims to spark creativity, 
+encourage collaboration, and foster stronger connections among members. 
+Through engaging activities and team challenges, participants will dive into the 
+spirit of innovation and teamwork that drives IEDC forward.
+`,
+  },
+  {
     id: "cat2025",
     title: "Catalyst 2",
-    date: "July 9, 2025",
-    time: "2.00 PM",
-    location: "Offline",
+    date: "July 16, 2025",
+    time: "03.00 PM",
+    location: "LP A-217",
     image: "Events/CATALYST.webp",
     category: "Ideathon",
     registerLink: "https://forms.gle/6Vh6cxziRznVqox19",
@@ -31,7 +47,7 @@ export const pastEvents: Event[] = [
     id: "Aarohi",
     title: "Aarohi : Ascending Beyond Limits",
     date: "March 7, 2025",
-    time: "9.45 AM",
+    time: "09.45 AM",
     location: "LP Atrium",
     image: "Events/aarohi.webp",
     category: "Celebration",
@@ -86,7 +102,7 @@ The event was expertly coordinated by Dr. Uma Narayanan, along with student coor
   },
   {
     id: "EmpowHER",
-    title: "EmpowHER : Problem Solving Competition",
+    title: "EmpowHER: Problem Solving Competition",
     date: "March 7, 2025",
     time: "02:00 PM",
     location: "LP - A212",
@@ -114,9 +130,9 @@ Expertly coordinated by Dr. Uma Narayanan and student coordinator Ms. Rosemary T
   },
   {
     id: "GeeksandGiggles",
-    title: "Geeks and Giggles : Tech Meme Competition",
+    title: "Geeks & Giggles : Tech Meme Competition",
     date: "March 4, 2025",
-    time: "4:00 PM",
+    time: "04:00 PM",
     location: "Online",
     image: "Events/techmeme.webp",
     category: "Online",
@@ -142,7 +158,7 @@ The success of the competition was largely attributed to the dedication of the I
     id: "rajagiri",
     title: "Rajagiri IEDC Visit",
     date: "February 10, 2025",
-    time: "4:30 PM",
+    time: "04:30 PM",
     location: "IEDC-RSET, Rajagiri Valley, Ernakulam",
     image: "Events/rajagiri.jpg",
     category: "Collaboration",
@@ -152,7 +168,7 @@ The success of the competition was largely attributed to the dedication of the I
     id: "brandyou_01",
     title: "Brand You : LinkedIn Mastery Workshop",
     date: "February 10, 2025",
-    time: "3:00 PM",
+    time: "03:00 PM",
     location: "LP - A404",
     image: "Events/brand.jpg",
     category: "Internal Workshop",
@@ -162,7 +178,7 @@ The success of the competition was largely attributed to the dedication of the I
     id: "cat24",
     title: "Catalyst 2024",
     date: "November 08, 2024",
-    time: "2:00 PM",
+    time: "02:00 PM",
     location: "LP - A325",
     image: "Events/catalyst.jpg",
     category: "Ideathon",
