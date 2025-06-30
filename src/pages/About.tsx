@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { CalendarDays, Trophy, Users, Sparkles, HeartHandshake, PartyPopper, Lightbulb, Target, Rocket } from "lucide-react";
 import { useRef } from "react";
+import { cn } from "@/lib/utils";
 
 // Timeline data structure - easily editable JSON structure
 interface TimelineEvent {
