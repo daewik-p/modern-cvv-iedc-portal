@@ -1,8 +1,7 @@
 import { motion, useInView } from "framer-motion";
-import { CalendarDays, Trophy, Users, Sparkles, HeartHandshake, PartyPopper, Lightbulb, Target, Rocket, ExternalLink, Camera, Calendar } from "lucide-react";
-import { useRef, useState } from "react";
+import { CalendarDays, Trophy, Users, Sparkles, HeartHandshake, PartyPopper, Lightbulb, Target, Rocket } from "lucide-react";
+import { useRef } from "react";
 import { cn } from "@/lib/utils";
-import { Link } from "react-router-dom";
 
 // Timeline data structure - easily editable JSON structure
 interface TimelineEvent {
@@ -11,11 +10,6 @@ interface TimelineEvent {
   description: string;
   icon: JSX.Element;
   category: "milestone" | "event" | "achievement" | "collaboration";
-  quickAction?: {
-    type: "gallery" | "events";
-    label: string;
-    path: string;
-  };
 }
 
 // Editable timeline data - can be moved to a separate JSON file
@@ -33,11 +27,6 @@ const timelineEvents: TimelineEvent[] = [
     description: "Our first idea pitching competition in collaboration with IIC, bringing together innovative minds and fostering entrepreneurial spirit.",
     icon: <Trophy className="w-6 h-6" />,
     category: "event",
-    quickAction: {
-      type: "gallery",
-      label: "View Photos",
-      path: "/gallery"
-    }
   },
   {
     date: "January 31, 2025",
@@ -52,11 +41,6 @@ const timelineEvents: TimelineEvent[] = [
     description: "Strategic collaboration with Rajagiri School of Engineering and Technology, expanding our network and sharing best practices.",
     icon: <HeartHandshake className="w-6 h-6" />,
     category: "collaboration",
-    quickAction: {
-      type: "gallery",
-      label: "View Photos",
-      path: "/gallery"
-    }
   },
   {
     date: "March 07, 2025",
@@ -64,11 +48,6 @@ const timelineEvents: TimelineEvent[] = [
     description: "International Women's Day celebration empowering women in technology and entrepreneurship with inspiring talks and competitions.",
     icon: <PartyPopper className="w-6 h-6" />,
     category: "event",
-    quickAction: {
-      type: "gallery",
-      label: "View Photos",
-      path: "/gallery"
-    }
   }
 ];
 
@@ -113,12 +92,11 @@ const missionValues = [
   },
 ];
 
-// Timeline item component with hover popup
+// Timeline item component
 const TimelineItem = ({ event, index, isLast }: { event: TimelineEvent; index: number; isLast: boolean }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const isEven = index % 2 === 0;
-  const [isHovered, setIsHovered] = useState(false);
 
   const getCategoryColor = (category: string) => {
     switch (category) {
@@ -137,8 +115,6 @@ const TimelineItem = ({ event, index, isLast }: { event: TimelineEvent; index: n
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.2 }}
       className="relative flex items-center mb-16 last:mb-0"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Desktop Layout */}
       <div className="hidden lg:flex w-full items-center">
@@ -148,7 +124,7 @@ const TimelineItem = ({ event, index, isLast }: { event: TimelineEvent; index: n
             initial={{ opacity: 0, x: isEven ? 50 : -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: index * 0.2 + 0.2 }}
-            className="relative bg-white/90 backdrop-blur-lg rounded-2xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 group"
+            className="bg-white/90 backdrop-blur-lg rounded-2xl border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 group"
           >
             <div className="flex items-center gap-2 mb-3">
               <span className={cn(
@@ -163,32 +139,6 @@ const TimelineItem = ({ event, index, isLast }: { event: TimelineEvent; index: n
               {event.title}
             </h3>
             <p className="text-gray-600 leading-relaxed">{event.description}</p>
-
-            {/* Hover Popup */}
-            <AnimatePresence>
-              {isHovered && event.quickAction && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9, y: 10 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9, y: 10 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute -top-16 left-1/2 transform -translate-x-1/2 z-20"
-                >
-                  <Link
-                    to={event.quickAction.path}
-                    className="inline-flex items-center bg-gradient-to-r from-primary to-amber-600 text-white px-4 py-2 rounded-full font-medium hover:from-primary/90 hover:to-amber-600/90 transition-all duration-300 shadow-lg whitespace-nowrap"
-                  >
-                    {event.quickAction.type === "gallery" ? (
-                      <Camera className="w-4 h-4 mr-2" />
-                    ) : (
-                      <Calendar className="w-4 h-4 mr-2" />
-                    )}
-                    {event.quickAction.label}
-                    <ExternalLink className="w-3 h-3 ml-2" />
-                  </Link>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </motion.div>
         </div>
 
@@ -199,9 +149,8 @@ const TimelineItem = ({ event, index, isLast }: { event: TimelineEvent; index: n
             animate={isInView ? { scale: 1, rotate: 0 } : {}}
             transition={{ duration: 0.5, delay: index * 0.2 + 0.1 }}
             className={cn(
-              "w-16 h-16 rounded-full flex items-center justify-center text-white shadow-lg z-10 bg-gradient-to-br transition-transform duration-300",
-              getCategoryColor(event.category),
-              isHovered && "scale-110"
+              "w-16 h-16 rounded-full flex items-center justify-center text-white shadow-lg z-10 bg-gradient-to-br",
+              getCategoryColor(event.category)
             )}
           >
             {event.icon}
@@ -230,9 +179,8 @@ const TimelineItem = ({ event, index, isLast }: { event: TimelineEvent; index: n
             animate={isInView ? { scale: 1, rotate: 0 } : {}}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className={cn(
-              "w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg z-10 bg-gradient-to-br transition-transform duration-300",
-              getCategoryColor(event.category),
-              isHovered && "scale-110"
+              "w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg z-10 bg-gradient-to-br",
+              getCategoryColor(event.category)
             )}
           >
             {event.icon}
@@ -251,7 +199,7 @@ const TimelineItem = ({ event, index, isLast }: { event: TimelineEvent; index: n
           initial={{ opacity: 0, x: 30 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.6, delay: index * 0.1 + 0.1 }}
-          className="flex-1 bg-white/90 backdrop-blur-lg rounded-2xl border border-gray-200 p-4 shadow-lg relative"
+          className="flex-1 bg-white/90 backdrop-blur-lg rounded-2xl border border-gray-200 p-4 shadow-lg"
         >
           <div className="flex flex-wrap items-center gap-2 mb-2">
             <span className={cn(
@@ -264,23 +212,6 @@ const TimelineItem = ({ event, index, isLast }: { event: TimelineEvent; index: n
           </div>
           <h3 className="text-lg font-bold text-gray-800 mb-2">{event.title}</h3>
           <p className="text-gray-600 text-sm leading-relaxed">{event.description}</p>
-
-          {/* Mobile Quick Action */}
-          {event.quickAction && (
-            <div className="mt-3">
-              <Link
-                to={event.quickAction.path}
-                className="inline-flex items-center bg-gradient-to-r from-primary to-amber-600 text-white px-3 py-1.5 rounded-full text-sm font-medium hover:from-primary/90 hover:to-amber-600/90 transition-all duration-300"
-              >
-                {event.quickAction.type === "gallery" ? (
-                  <Camera className="w-3 h-3 mr-1" />
-                ) : (
-                  <Calendar className="w-3 h-3 mr-1" />
-                )}
-                {event.quickAction.label}
-              </Link>
-            </div>
-          )}
         </motion.div>
       </div>
     </motion.div>
@@ -398,7 +329,6 @@ const About = () => {
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Discover the key moments that have shaped our innovation journey and community impact.
-              <span className="block text-sm mt-2 text-primary font-medium">Hover over milestones for quick actions</span>
             </p>
           </motion.div>
 

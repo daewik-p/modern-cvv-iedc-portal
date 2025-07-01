@@ -1,4 +1,4 @@
-import { Linkedin, ChevronDown, Users, Calendar } from "lucide-react";
+import { Linkedin, ChevronDown } from "lucide-react";
 import { type ExecomMember, execomMembers } from "@/data/execom";
 import { memo, useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -94,7 +94,7 @@ const teamYears = [
 ];
 
 /**
- * MemberCard Component - Displays a single team member with prominent LinkedIn
+ * MemberCard Component - Displays a single team member
  */
 const MemberCard = memo(({ member, index }: { member: ExecomMember; index: number }) => {
   const isExternalImage = member.image.startsWith('http');
@@ -113,7 +113,7 @@ const MemberCard = memo(({ member, index }: { member: ExecomMember; index: numbe
         stiffness: 100
       }}
       whileHover={{ y: -8, scale: 1.02 }}
-      className="group relative bg-white/90 backdrop-blur-lg rounded-2xl overflow-hidden border border-gray-200 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 w-full max-w-[280px]"
+      className="group bg-white/90 backdrop-blur-lg rounded-2xl overflow-hidden border border-gray-200 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 w-full max-w-[280px]"
     >
       <div className="relative aspect-[4/5] overflow-hidden">
         <img
@@ -128,39 +128,18 @@ const MemberCard = memo(({ member, index }: { member: ExecomMember; index: numbe
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         
-        {/* LinkedIn button - prominently placed */}
-        {member.linkedin && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: index * 0.1 + 0.3 }}
-            className="absolute top-4 right-4 z-10"
-          >
-            <motion.a
-              href={member.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-10 h-10 bg-[#0A66C2] text-white rounded-full shadow-lg hover:bg-[#004182] transition-all duration-300 hover:scale-110"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label={`Connect with ${member.name} on LinkedIn`}
-            >
-              <Linkedin className="w-5 h-5" />
-            </motion.a>
-          </motion.div>
-        )}
-
-        {/* Enhanced LinkedIn button on hover */}
+        {/* LinkedIn button */}
         {member.linkedin && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
+            whileHover={{ opacity: 1, y: 0 }}
             className="absolute bottom-4 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300"
           >
             <a
               href={member.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center bg-[#0A66C2] text-white px-4 py-2 rounded-full font-medium hover:bg-[#004182] transition-colors duration-300 shadow-lg whitespace-nowrap"
+              className="inline-flex items-center bg-[#0A66C2] text-white px-4 py-2 rounded-full font-medium hover:bg-[#004182] transition-colors duration-300 shadow-lg"
             >
               <Linkedin className="w-4 h-4 mr-2" />
               Connect
@@ -214,15 +193,9 @@ const TeamSection = memo(({ title, members, isExpanded, onToggle }: {
         whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 0.99 }}
       >
-        <div className="flex items-center">
-          <Users className="w-6 h-6 text-primary mr-3" />
-          <h3 className="text-2xl font-bold text-gray-800 group-hover:text-primary transition-colors">
-            {title}
-          </h3>
-          <span className="ml-3 px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
-            {allMembers.length} members
-          </span>
-        </div>
+        <h3 className="text-2xl font-bold text-gray-800 group-hover:text-primary transition-colors">
+          {title}
+        </h3>
         <motion.div
           animate={{ rotate: isExpanded ? 180 : 0 }}
           transition={{ duration: 0.3 }}
@@ -307,83 +280,6 @@ const TeamSection = memo(({ title, members, isExpanded, onToggle }: {
 TeamSection.displayName = 'TeamSection';
 
 /**
- * YearTab Component - Interactive year selection with hover effects
- */
-const YearTab = memo(({ team, isSelected, onClick, index }: {
-  team: any;
-  isSelected: boolean;
-  onClick: () => void;
-  index: number;
-}) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <motion.button
-      onClick={onClick}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={cn(
-        "relative px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 border-2 overflow-hidden group",
-        isSelected
-          ? "bg-gradient-to-r from-primary to-amber-600 text-white border-transparent shadow-lg"
-          : "bg-white/90 backdrop-blur-lg text-gray-700 border-gray-200 hover:border-primary/30 hover:text-primary"
-      )}
-      whileHover={{ scale: 1.05, y: -2 }}
-      whileTap={{ scale: 0.95 }}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
-    >
-      {/* Background animation */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-primary/10 to-amber-600/10"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ 
-          scale: isHovered && !isSelected ? 1 : 0, 
-          opacity: isHovered && !isSelected ? 1 : 0 
-        }}
-        transition={{ duration: 0.3 }}
-      />
-      
-      <div className="relative z-10 text-center">
-        <div className="font-bold">{team.year}</div>
-        <motion.div 
-          className="text-sm opacity-80"
-          animate={{ opacity: isHovered || isSelected ? 1 : 0.8 }}
-        >
-          {team.label}
-        </motion.div>
-        
-        {/* Active indicator */}
-        {team.isActive && (
-          <motion.div
-            className="absolute -top-2 -right-2 w-3 h-3 bg-green-500 rounded-full"
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-        )}
-      </div>
-
-      {/* Hover tooltip */}
-      <AnimatePresence>
-        {isHovered && !isSelected && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/80 text-white px-3 py-1 rounded-lg text-sm whitespace-nowrap pointer-events-none"
-          >
-            Click to view {team.year} team
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.button>
-  );
-});
-
-YearTab.displayName = 'YearTab';
-
-/**
  * Main Team Component
  */
 const Team = () => {
@@ -399,11 +295,6 @@ const Team = () => {
       ...prev,
       [sectionName]: !prev[sectionName]
     }));
-  };
-
-  const handleYearChange = (year: string) => {
-    setSelectedYear(year);
-    setExpandedSections({ "Executive Committee": true });
   };
 
   return (
@@ -428,7 +319,6 @@ const Team = () => {
               className="inline-flex items-center bg-white/90 backdrop-blur-lg border border-primary/20 rounded-full px-6 py-3 mb-8 shadow-lg"
               whileHover={{ scale: 1.05 }}
             >
-              <Users className="w-5 h-5 mr-2 text-primary" />
               <span className="text-primary font-medium">Meet Our Team</span>
             </motion.div>
             
@@ -446,16 +336,32 @@ const Team = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-wrap justify-center gap-6 mb-12"
+            className="flex flex-wrap justify-center gap-4 mb-12"
           >
             {teamYears.map((team, index) => (
-              <YearTab
+              <motion.button
                 key={team.year}
-                team={team}
-                isSelected={selectedYear === team.year}
-                onClick={() => handleYearChange(team.year)}
-                index={index}
-              />
+                onClick={() => {
+                  setSelectedYear(team.year);
+                  setExpandedSections({ "Executive Committee": true });
+                }}
+                className={cn(
+                  "px-6 py-3 rounded-full font-bold text-lg transition-all duration-300 border-2",
+                  selectedYear === team.year
+                    ? "bg-gradient-to-r from-primary to-amber-600 text-white border-transparent shadow-lg"
+                    : "bg-white/90 backdrop-blur-lg text-gray-700 border-gray-200 hover:border-primary/30 hover:text-primary"
+                )}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
+              >
+                <div className="text-center">
+                  <div className="font-bold">{team.year}</div>
+                  <div className="text-sm opacity-80">{team.label}</div>
+                </div>
+              </motion.button>
             ))}
           </motion.div>
         </div>
@@ -496,7 +402,6 @@ const Team = () => {
               className="text-center py-16"
             >
               <div className="bg-white/90 backdrop-blur-lg rounded-3xl border border-gray-200 p-12 max-w-md mx-auto shadow-xl">
-                <Calendar className="w-16 h-16 text-primary mx-auto mb-6" />
                 <h3 className="text-2xl font-bold text-gray-800 mb-4">Coming Soon!</h3>
                 <p className="text-gray-600">
                   Team information for {selectedYear} will be updated soon.

@@ -16,11 +16,10 @@ const Navigation = () => {
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -38,10 +37,10 @@ const Navigation = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out",
-          isHomePage && !isScrolled
-            ? "bg-white/10 backdrop-blur-md border-b border-white/20"
-            : "bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-lg shadow-gray-300/10"
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
+          isScrolled
+            ? "bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-lg shadow-gray-300/20"
+            : "bg-white/80 backdrop-blur-md border-b border-gray-100"
         )}
       >
         <div className="container mx-auto px-4">
@@ -64,7 +63,7 @@ const Navigation = () => {
             </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-2">
+            <div className="hidden md:flex items-center space-x-1">
               {navigationLinks.map((link, index) => (
                 <motion.div
                   key={link.href}
@@ -75,41 +74,35 @@ const Navigation = () => {
                   <Link
                     to={link.href}
                     className={cn(
-                      "relative px-6 py-3 text-sm font-bold tracking-wide transition-all duration-300 group rounded-lg",
+                      "relative px-6 py-3 text-sm font-bold tracking-wide transition-all duration-300 group",
                       location.pathname === link.href
-                        ? isHomePage && !isScrolled
-                          ? "text-white"
-                          : "text-primary"
-                        : isHomePage && !isScrolled
-                          ? "text-white/90 hover:text-white"
-                          : "text-gray-700 hover:text-primary"
+                        ? "text-primary"
+                        : "text-gray-700 hover:text-primary"
                     )}
                   >
                     <span className="relative z-10">{link.label}</span>
                     
                     {/* Hover background effect */}
                     <motion.div
-                      className={cn(
-                        "absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300",
-                        isHomePage && !isScrolled
-                          ? "bg-white/20"
-                          : "bg-primary/5"
-                      )}
+                      className="absolute inset-0 bg-primary/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                       layoutId="navbar-hover"
                     />
                     
                     {/* Active/Hover underline */}
                     <motion.div
                       className={cn(
-                        "absolute bottom-1 left-1/2 h-0.5 rounded-full transition-all duration-300",
+                        "absolute bottom-1 left-1/2 h-0.5 bg-gradient-to-r from-primary to-amber-600 rounded-full transition-all duration-300",
                         location.pathname === link.href
                           ? "w-8 opacity-100"
-                          : "w-0 group-hover:w-8 opacity-0 group-hover:opacity-100",
-                        isHomePage && !isScrolled
-                          ? "bg-white"
-                          : "bg-gradient-to-r from-primary to-amber-600"
+                          : "w-0 group-hover:w-8 opacity-0 group-hover:opacity-100"
                       )}
                       style={{ transform: "translateX(-50%)" }}
+                    />
+                    
+                    {/* Glow effect on hover */}
+                    <motion.div
+                      className="absolute inset-0 bg-primary/10 rounded-lg blur-sm opacity-0 group-hover:opacity-50 transition-opacity duration-300"
+                      initial={false}
                     />
                   </Link>
                 </motion.div>
@@ -120,12 +113,7 @@ const Navigation = () => {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={toggleMobileMenu}
-              className={cn(
-                "md:hidden p-2 rounded-lg transition-colors duration-300",
-                isHomePage && !isScrolled
-                  ? "bg-white/20 hover:bg-white/30"
-                  : "bg-primary/10 hover:bg-primary/20"
-              )}
+              className="md:hidden p-2 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors duration-300"
               aria-label="Toggle mobile menu"
             >
               <AnimatePresence mode="wait">
@@ -137,10 +125,7 @@ const Navigation = () => {
                     exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <X className={cn(
-                      "w-6 h-6",
-                      isHomePage && !isScrolled ? "text-white" : "text-primary"
-                    )} />
+                    <X className="w-6 h-6 text-primary" />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -150,10 +135,7 @@ const Navigation = () => {
                     exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Menu className={cn(
-                      "w-6 h-6",
-                      isHomePage && !isScrolled ? "text-white" : "text-primary"
-                    )} />
+                    <Menu className="w-6 h-6 text-primary" />
                   </motion.div>
                 )}
               </AnimatePresence>
