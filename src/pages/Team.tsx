@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 // Team years data - easily expandable
 const teamYears = [
   {
-    year: "2025-2026",
+    year: "2025",
     label: "Current Team",
     isActive: true,
     teams: {
@@ -15,75 +15,16 @@ const teamYears = [
       "Media Team": {
         nodalOfficers: [],
         iph: [],
-        crl: [
-          {
-            name: "Aarcha Praveen",
-            role: "Head of Branding & Marketing",
-            image: "execom/aarcha.jpg",
-            linkedin: "http://www.linkedin.com/in/aarchapraveen012"
-          },
-          {
-            name: "Anjana Prakash",
-            role: "Head of Research & Collaboration",
-            image: "execom/anjana.jpg",
-            linkedin: "https://www.linkedin.com/in/anjanaprakash017"
-          }
-        ],
+        crl: [],
         sl: []
       },
-      "Tech Team": {
-        nodalOfficers: [],
-        iph: [],
-        crl: [
-          {
-            name: "Daewik Prasheen",
-            role: "Head of Technology",
-            image: "execom/daewik.jpg",
-            linkedin: "https://www.linkedin.com/in/daewik"
-          }
-        ],
-        sl: []
-      },
-      "Innovation Team": {
-        nodalOfficers: [],
-        iph: [],
-        crl: [
-          {
-            name: "Anuja S Nair",
-            role: "Head of Innovation & Development",
-            image: "execom/anuja.jpg",
-            linkedin: "https://www.linkedin.com/in/anuja-s-nair-777315322"
-          },
-          {
-            name: "Niranjana Uday",
-            role: "Head of Startup Incubation",
-            image: "execom/niranjanau.jpg",
-            linkedin: "https://www.linkedin.com/in/niranjana-uday/"
-          }
-        ],
-        sl: []
-      }
-    }
-  },
-  {
-    year: "2024-2025",
-    label: "Previous Team",
-    isActive: false,
-    teams: {
-      "Executive Committee": {
+      "Create Team": {
         nodalOfficers: [],
         iph: [],
         crl: [],
         sl: []
-      }
-    }
-  },
-  {
-    year: "2023-2024",
-    label: "Founding Team",
-    isActive: false,
-    teams: {
-      "Executive Committee": {
+      },
+      "Orbit Team": {
         nodalOfficers: [],
         iph: [],
         crl: [],
@@ -283,7 +224,7 @@ TeamSection.displayName = 'TeamSection';
  * Main Team Component
  */
 const Team = () => {
-  const [selectedYear, setSelectedYear] = useState("2025-2026");
+  const [selectedYear, setSelectedYear] = useState("2025");
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
     "Executive Committee": true
   });
@@ -315,13 +256,7 @@ const Team = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <motion.div
-              className="inline-flex items-center bg-white/90 backdrop-blur-lg border border-primary/20 rounded-full px-6 py-3 mb-8 shadow-lg"
-              whileHover={{ scale: 1.05 }}
-            >
-              <span className="text-primary font-medium">Meet Our Team</span>
-            </motion.div>
-            
+                   
             <h1 className="text-4xl md:text-6xl font-black text-gray-800 mb-6">
               Our <span className="bg-gradient-to-r from-primary to-amber-600 bg-clip-text text-transparent">Team</span>
             </h1>

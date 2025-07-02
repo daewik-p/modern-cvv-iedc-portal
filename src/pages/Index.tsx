@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { ArrowRight, Users, Target, Lightbulb, Instagram, Linkedin, Youtube, Calendar, MapPin, Clock, ExternalLink, Sparkles, Zap, Rocket } from "lucide-react";
+import { FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { upcomingEvents } from "@/data/events";
@@ -269,16 +270,7 @@ const Index = () => {
             animate="visible"
             className="max-w-5xl mx-auto"
           >
-            {/* Animated badge */}
-            <motion.div
-              variants={textVariants}
-              className="inline-flex items-center bg-white/90 backdrop-blur-lg border border-primary/20 rounded-full px-6 py-3 mb-8 shadow-lg"
-            >
-              <Sparkles className="w-5 h-5 mr-2 text-amber-500" />
-              <span className="text-primary font-medium">Innovation & Entrepreneurship Hub</span>
-            </motion.div>
-
-            {/* Main heading with gradient text */}
+                        {/* Main heading with gradient text */}
             <motion.h1
               variants={textVariants}
               className="text-5xl md:text-8xl font-black mb-6 leading-tight"
@@ -361,14 +353,6 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <motion.div
-              className="inline-flex items-center bg-gradient-to-r from-primary/10 to-amber-500/10 backdrop-blur-lg border border-primary/20 rounded-full px-6 py-3 mb-6"
-              whileHover={{ scale: 1.05 }}
-            >
-              <Rocket className="w-5 h-5 mr-2 text-primary" />
-              <span className="text-primary font-medium">What's Coming Next</span>
-            </motion.div>
-            
             <h2 className="text-4xl md:text-6xl font-black text-gray-800 mb-6">
               Upcoming <span className="bg-gradient-to-r from-primary to-amber-600 bg-clip-text text-transparent">Events</span>
             </h2>
@@ -519,14 +503,6 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <motion.div
-              className="inline-flex items-center bg-gradient-to-r from-primary/10 to-amber-500/10 backdrop-blur-lg border border-primary/20 rounded-full px-6 py-3 mb-8"
-              whileHover={{ scale: 1.05 }}
-            >
-              <Zap className="w-5 h-5 mr-2 text-amber-600" />
-              <span className="text-primary font-medium">Stay Connected</span>
-            </motion.div>
-            
             <h2 className="text-4xl md:text-6xl font-black text-gray-800 mb-6">
               Connect <span className="bg-gradient-to-r from-primary to-amber-600 bg-clip-text text-transparent">With Us</span>
             </h2>
@@ -537,21 +513,21 @@ const Index = () => {
             <div className="flex justify-center items-center space-x-8">
               {[
                 {
-                  icon: Instagram,
+                  icon: FaInstagram,
                   label: "Instagram",
                   href: "https://instagram.com/cvviedc/",
                   gradient: "from-pink-500 to-purple-500",
                   hoverColor: "hover:shadow-pink-500/25"
                 },
                 {
-                  icon: Linkedin,
+                  icon: FaLinkedinIn,
                   label: "LinkedIn",
                   href: "https://www.linkedin.com/company/cvv-iedc-2024",
                   gradient: "from-primary to-primary/80",
                   hoverColor: "hover:shadow-primary/25"
                 },
                 {
-                  icon: Youtube,
+                  icon: FaYoutube,
                   label: "YouTube",
                   href: "https://youtube.com/@CVVIEDC",
                   gradient: "from-red-500 to-red-600",

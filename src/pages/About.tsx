@@ -9,7 +9,7 @@ interface TimelineEvent {
   title: string;
   description: string;
   icon: JSX.Element;
-  category: "milestone" | "event" | "achievement" | "collaboration";
+  category: "Milestone" | "Event" | "achievement" | "Collaboration";
 }
 
 // Editable timeline data - can be moved to a separate JSON file
@@ -19,35 +19,35 @@ const timelineEvents: TimelineEvent[] = [
     title: "IEDC Establishment",
     description: "Foundation of Innovation and Entrepreneurship Development Centre at Chinmaya Vishwa Vidhyapeeth, marking the beginning of our innovation journey.",
     icon: <Sparkles className="w-6 h-6" />,
-    category: "milestone",
+    category: "Milestone",
   },
   {
-    date: "November 10, 2024",
+    date: "November 08, 2024",
     title: "Catalyst 2024",
     description: "Our first idea pitching competition in collaboration with IIC, bringing together innovative minds and fostering entrepreneurial spirit.",
     icon: <Trophy className="w-6 h-6" />,
-    category: "event",
+    category: "Event",
   },
   {
     date: "January 31, 2025",
     title: "Executive Committee 2k25",
     description: "Formation of new leadership team with fresh perspectives and renewed commitment to innovation and excellence.",
     icon: <Users className="w-6 h-6" />,
-    category: "milestone",
+    category: "Milestone",
   },
   {
     date: "February 19, 2025",
     title: "RSET IEDC x CVV IEDC",
     description: "Strategic collaboration with Rajagiri School of Engineering and Technology, expanding our network and sharing best practices.",
     icon: <HeartHandshake className="w-6 h-6" />,
-    category: "collaboration",
+    category: "Collaboration",
   },
   {
     date: "March 07, 2025",
     title: "Aarohi : Ascending Beyond Limits",
     description: "International Women's Day celebration empowering women in technology and entrepreneurship with inspiring talks and competitions.",
     icon: <PartyPopper className="w-6 h-6" />,
-    category: "event",
+    category: "Event",
   }
 ];
 
@@ -100,10 +100,10 @@ const TimelineItem = ({ event, index, isLast }: { event: TimelineEvent; index: n
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case "milestone": return "from-primary to-primary/80";
-      case "event": return "from-amber-600 to-amber-500";
+      case "Milestone": return "from-primary to-primary/80";
+      case "Event": return "from-amber-600 to-amber-500";
       case "achievement": return "from-green-600 to-green-500";
-      case "collaboration": return "from-orange-600 to-orange-500";
+      case "Collaboration": return "from-orange-600 to-orange-500";
       default: return "from-gray-600 to-gray-500";
     }
   };
@@ -246,14 +246,6 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <motion.div
-              className="inline-flex items-center bg-white/90 backdrop-blur-lg border border-primary/20 rounded-full px-6 py-3 mb-8 shadow-lg"
-              whileHover={{ scale: 1.05 }}
-            >
-              <Sparkles className="w-5 h-5 mr-2 text-amber-600" />
-              <span className="text-primary font-medium">Our Story</span>
-            </motion.div>
-            
             <h1 className="text-4xl md:text-6xl font-black text-gray-800 mb-6">
               About <span className="bg-gradient-to-r from-primary to-amber-600 bg-clip-text text-transparent">IEDC CVV</span>
             </h1>
@@ -316,16 +308,9 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <motion.div
-              className="inline-flex items-center bg-gradient-to-r from-primary/10 to-amber-500/10 backdrop-blur-lg border border-primary/20 rounded-full px-6 py-3 mb-6"
-              whileHover={{ scale: 1.05 }}
-            >
-              <CalendarDays className="w-5 h-5 mr-2 text-primary" />
-              <span className="text-primary font-medium">Our Journey</span>
-            </motion.div>
-            
+      
             <h2 className="text-4xl md:text-5xl font-black text-gray-800 mb-6">
-              Milestones & <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">Achievements</span>
+              Our <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">Journey</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Discover the key moments that have shaped our innovation journey and community impact.
