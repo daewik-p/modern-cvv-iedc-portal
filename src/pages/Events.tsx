@@ -6,10 +6,9 @@ import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import { type Event, upcomingEvents, pastEvents } from "@/data/events";
 
-// Featured events (can be manually curated or auto-selected)
 const featuredEvents = [
-  ...upcomingEvents.slice(0, 3), // Take first 3 upcoming events
-  ...pastEvents.slice(0, 2) // Take 2 recent past events
+  ...upcomingEvents.filter(e => e.featured),
+  ...pastEvents.filter(e => e.featured)
 ];
 
 // Event detail slide-in panel component

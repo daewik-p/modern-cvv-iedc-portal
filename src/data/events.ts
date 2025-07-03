@@ -8,7 +8,8 @@ export interface Event {
   image: string;
   category: string;
   description: string;
-  registerLink?: string; //optional field for register button
+  registerLink?: string;
+  featured?: boolean; // Optional field to mark featured events
 }
 
 export const upcomingEvents: Event[] = [
@@ -20,6 +21,7 @@ export const upcomingEvents: Event[] = [
     location: "LP A-217",
     image: "Events/ideaverse.webp",
     category: "Icebreaker",
+    featured: true, 
     description: `IDEAverse is a dynamic brainstorming and ice-breaking session designed 
 exclusively for IEDC team members including the Executive Committee, Media, 
 Create, and Orbit teams. This interactive gathering aims to spark creativity, 
@@ -37,6 +39,7 @@ spirit of innovation and teamwork that drives IEDC forward.
     image: "Events/CATALYST.webp",
     category: "Ideathon",
     registerLink: "https://forms.gle/6Vh6cxziRznVqox19",
+    featured: true,
     description: `Catalyst 2025, organized by the Innovation and Entrepreneurship Development Center (IEDC) at CVV, is an ideathon designed to foster innovation and entrepreneurial thinking among students. The event provides a platform for participants to pitch creative startup ideas addressing real-world challenges. With teams from various disciplines, the competition features insightful mentorship sessions, expert feedback, and collaborative discussions that help refine and shape promising business concepts.
 `,
   }
@@ -51,6 +54,7 @@ export const pastEvents: Event[] = [
     location: "LP Atrium",
     image: "Events/aarohi.webp",
     category: "Celebration",
+    featured: true,
     description: `CVV-IEDC and IIC hosted AAROHI: Ascending Beyond Limits at the LP Atrium, bringing together over 220 participants for an inspiring Women’s Day celebration. Centered around the theme "Empower, Inspire, Elevate," the event created a vibrant platform to honor women's achievements, encourage leadership, and drive conversations on gender equality. The day began with a ceremonial lamp lighting, followed by a warm welcome from Dr. Sunitha Grandhee and a presidential address by Prof. Ajay Kapoor, who emphasized the role of education in women's empowerment. Ms. Sujata Madhav Chandran, Global Head at TCS, delivered the inaugural address, highlighting the importance of fostering inclusive ecosystems and recognizing women’s contributions in every sphere.
 
 The celebration continued with a spirited dance performance by students from the Institute of Science and Technology, choreographed by Akshara M. K, and a dynamic session by Ms. Raji P, founder of RastelX Technologies, who spoke on breaking barriers in technology and empowering women entrepreneurs. A cultural performance led by students from B.Tech Cyber Security added to the festive atmosphere, followed by an insightful talk by Dr. Usha Narayanan on women in business, leadership, and the significance of financial independence and mental wellness. Post-lunch sessions featured exciting competitions such as the Exit or Extinct escape room challenge, the EmpowHER idea-pitching event, and the Battle of Brains quiz, celebrating the achievements of women across various domains. The day concluded with a lively prize distribution ceremony and a cultural showcase led by Aadarsh P. Hareesh and team, leaving the audience inspired and energized.
