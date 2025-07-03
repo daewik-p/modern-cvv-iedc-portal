@@ -158,7 +158,7 @@ export const mediaTeamMembers: ExecomMembers = {
       name: "Anandhu Prakash ",
       role: "Media Team Member",
       image: "execom/anandhu.jpg",
-      linkedin: "https://linkedin.com/in/potla-akhil-0b1a5a1b6"
+      linkedin: "https://www.linkedin.com/in/s-anandhu-prakash-b1b224320?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       name: "Eldho Binu ",
@@ -226,9 +226,34 @@ export const orbitTeamMembers: ExecomMembers = {
   crl: [],
   sl: [
     {
-      name: "Rohit K",
+      name: "Rohana K Ajesh",
       role: "Orbit Team Member",
-      image: "execom/rohit.jpg"
-    }
+      image: "execom/rohana.jpg",
+      linkedin: "https://www.linkedin.com/in/rohana-k-ajesh-041711364?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
+    {
+      name: "Darsana A",
+      role: "Orbit Team Member",
+      image: "execom/darsana.jpg",
+      linkedin: "https://www.linkedin.com/in/darsana-a-125565321?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
+    {
+      name: "Vaishnav Darsan",
+      role: "Orbit Team Member",
+      image: "execom/vaishnav.jpg",
+      linkedin: "https://www.linkedin.com/in/vaishnav-darsan-952645323?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
+    {
+      name: "Sachin R",
+      role: "Orbit Team Member",
+      image: "execom/sachin.jpg",
+      linkedin: "https://www.linkedin.com/in/sachin-r-15612a323?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
+    {
+      name: "Sayooj Sunil Kumar",
+      role: "Orbit Team Member",
+      image: "execom/sayooj.jpg",
+      linkedin: "https://www.linkedin.com/in/sayooj-sunil-kumar-9a5b29323?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
   ]
 };
