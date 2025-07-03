@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Calendar, MapPin, Clock, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { upcomingEvents, pastEvents } from "@/data/events"; // Import event data
+import type { Event } from "@/data/events";
 
 const allEvents = [...upcomingEvents, ...pastEvents];
 
@@ -11,7 +12,7 @@ const EventDetail = () => {
   const navigate = useNavigate();
 
   // Combine all events from both upcoming and past events
-  const allEvents: Event[] = [...upcomingEvents, ...pastEvents];
+  const allEvents = [...upcomingEvents, ...pastEvents];
   const event = allEvents.find(e => e.id === eventId);
 
   if (!event) {

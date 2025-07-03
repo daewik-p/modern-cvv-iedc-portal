@@ -7,14 +7,14 @@ export interface ExecomMember {
 }
 
 export interface ExecomMembers {
-  nodalOfficers: ExecomMember[];
+  nodalOfficers: ExecomMember[];  
   iph: ExecomMember[];
   crl: ExecomMember[];
   sl: ExecomMember[];
 }
 
 // Team member data
-export const execomMembers: ExecomMembers = {
+export const execomMembers  : ExecomMembers = {
   nodalOfficers: [
     {
       name: "Mrs. Anupama Jims",
@@ -144,4 +144,116 @@ export const execomMembers: ExecomMembers = {
     }
     
   ],
+};
+export const mediaTeamMembers: ExecomMembers = {
+  nodalOfficers: [],
+  iph: [
+    {
+      name: "Potla Akhil ",
+      role: "Media Team Member",
+      image: "execom/akhil.jpg",
+      linkedin: "https://linkedin.com/in/potla-akhil-0b1a5a1b6"
+    },
+    {
+      name: "Anandhu Prakash ",
+      role: "Media Team Member",
+      image: "execom/anandhu.jpg",
+      linkedin: "https://www.linkedin.com/in/s-anandhu-prakash-b1b224320?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+    },
+    {
+      name: "Eldho Binu ",
+      role: "Media Team Member",
+      image: "execom/eldho.jpg",
+      linkedin: "https://linkedin.com/in/potla-akhil-0b1a5a1b6"
+    },
+    {
+      name: "Farsana N S ",
+      role: "Media Team Member",
+      image: "execom/farsana.jpg",
+      linkedin: "https://linkedin.com/in/potla-akhil-0b1a5a1b6"
+    },
+    {
+      name: "Namitha Manoj",
+      role: "Media Team Member",
+      image: "execom/namitha.jpg",
+      linkedin: "https://linkedin.com/in/potla-akhil-0b1a5a1b6"
+    },
+
+  ],
+  crl: [],
+  sl: []
+};
+export const createTeamMembers: ExecomMembers = {
+  nodalOfficers: [],
+  iph: [],
+  crl: [
+    {
+      name: "Fathima Nasrin C P",
+      role: "Create Team Member",
+      image: "execom/nasrin.jpg",
+      linkedin: "https://www.linkedin.com/in/fathima-nasrin-c-p-743293322?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
+    {
+      name: "Mohammed Midhilaj",
+      role: "Create Team Member",
+      image: "execom/midhilaj.jpg",
+      linkedin: "https://www.linkedin.com/in/mohammed-midhilaj-024936301?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+    },
+    {
+      name: "Abhijith P Ajith",
+      role: "Create Team Member",
+      image: "execom/abhijith.jpg",
+      linkedin: "https://www.linkedin.com/in/abhijithpajith-tech?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
+    {
+      name: "Saparya Swaroop",
+      role: "Create Team Member",
+      image: "execom/saparya.jpg",
+      linkedin: "https://in.linkedin.com/in/saparya-swaroop-0a515b323",
+    },
+    {
+      name: "Adithya M",
+      role: "Create Team Member",
+      image: "execom/adithya.jpg",
+      linkedin: "https://www.linkedin.com/in/adithya-m-ba4858274?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
+  ],
+  sl: []
+};
+export const orbitTeamMembers: ExecomMembers = {
+  nodalOfficers: [],
+  iph: [],
+  crl: [],
+  sl: [
+    {
+      name: "Rohana K Ajesh",
+      role: "Orbit Team Member",
+      image: "execom/rohana.jpg",
+      linkedin: "https://www.linkedin.com/in/rohana-k-ajesh-041711364?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
+    {
+      name: "Darsana A",
+      role: "Orbit Team Member",
+      image: "execom/darsana.jpg",
+      linkedin: "https://www.linkedin.com/in/darsana-a-125565321?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
+    {
+      name: "Vaishnav Darsan",
+      role: "Orbit Team Member",
+      image: "execom/vaishnav.jpg",
+      linkedin: "https://www.linkedin.com/in/vaishnav-darsan-952645323?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
+    {
+      name: "Sachin R",
+      role: "Orbit Team Member",
+      image: "execom/sachin.jpg",
+      linkedin: "https://www.linkedin.com/in/sachin-r-15612a323?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
+    {
+      name: "Sayooj Sunil Kumar",
+      role: "Orbit Team Member",
+      image: "execom/sayooj.jpg",
+      linkedin: "https://www.linkedin.com/in/sayooj-sunil-kumar-9a5b29323?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
+  ]
 };
