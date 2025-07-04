@@ -346,14 +346,14 @@ const EventSection = ({
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
         
         {/* Title and description overlay */}
-        <div className="absolute inset-0 flex items-center">
-          <div className="container mx-auto px-6 md:px-8">
-            <div className="max-w-3xl">
+        <div className="absolute inset-0 w-full h-full flex items-end">
+          <div className="w-full px-3 sm:px-6 pb-4 sm:pb-8">
+            <div className="w-full max-w-full">
               <motion.h2
                 initial={{ opacity: 0, x: -50 }}
                 animate={isVisible ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-3xl md:text-5xl font-black text-white mb-4 leading-tight"
+                className="text-lg sm:text-3xl md:text-5xl font-black text-white mb-2 sm:mb-4 leading-tight break-words"
               >
                 {event.title}
               </motion.h2>
@@ -362,13 +362,13 @@ const EventSection = ({
                 initial={{ opacity: 0, x: -50 }}
                 animate={isVisible ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="flex items-center gap-4 mb-4"
+                className="flex flex-wrap items-center gap-2 sm:gap-4 mb-2 sm:mb-4"
               >
-                <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
-                  <span className="text-white font-medium">{event.date}</span>
+                <div className="bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 sm:px-4 sm:py-2">
+                  <span className="text-white font-medium text-xs sm:text-base">{event.date}</span>
                 </div>
-                <div className="bg-primary/80 backdrop-blur-sm rounded-full px-4 py-2">
-                  <span className="text-white font-medium">{event.images.length} Photos</span>
+                <div className="bg-primary/80 backdrop-blur-sm rounded-full px-3 py-1 sm:px-4 sm:py-2">
+                  <span className="text-white font-medium text-xs sm:text-base">{event.images.length} Photos</span>
                 </div>
               </motion.div>
               
@@ -376,7 +376,7 @@ const EventSection = ({
                 initial={{ opacity: 0, x: -50 }}
                 animate={isVisible ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-white/90 text-lg leading-relaxed max-w-2xl"
+                className="text-white/90 text-sm sm:text-base leading-relaxed break-words"
               >
                 {event.description}
               </motion.p>
@@ -531,11 +531,10 @@ const Gallery = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-6xl font-black text-gray-800 mb-6">
+            <h1 className="text-2xl sm:text-4xl md:text-6xl font-black text-gray-800 mb-6">
               Event <span className="bg-gradient-to-r from-primary to-amber-600 bg-clip-text text-transparent">Gallery</span>
             </h1>
-            
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-xl text-gray-600 max-w-xs sm:max-w-3xl mx-auto leading-relaxed">
               Relive the moments of innovation, collaboration, and inspiration through our comprehensive event gallery showcasing the journey of CVV IEDC.
             </p>
           </motion.div>
@@ -561,8 +560,8 @@ const Gallery = () => {
               transition={{ duration: 0.6 }}
               className="text-center py-20"
             >
-              <div className="bg-white/90 backdrop-blur-lg rounded-3xl border border-gray-200 p-16 max-w-lg mx-auto shadow-xl">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Loading Gallery...</h3>
+              <div className="bg-white/90 backdrop-blur-lg rounded-3xl border border-gray-200 p-6 sm:p-10 md:p-16 max-w-xs sm:max-w-md md:max-w-lg mx-auto shadow-xl">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">Loading Gallery...</h3>
                 <p className="text-gray-600">
                   Please wait while we load the event galleries for you.
                 </p>
