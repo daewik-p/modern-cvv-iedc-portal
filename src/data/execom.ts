@@ -268,6 +268,12 @@ export const orbitTeamMembers: ExecomMembers = {
       image: "execom/varsha.jpg",
       linkedin: "https://www.linkedin.com/in/varsha-s-kumar-563aa5353?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
+    {
+      name: "Akhil S",
+      role: "Orbit Team Member",
+      image: "execom/akhil_s.jpg",
+      linkedin: "https://www.linkedin.com/in/akhil-s-0b1a5a1b6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
     
   ]
 };

@@ -449,11 +449,18 @@ const FeaturedEventCard = ({ event, index, onViewDetails, isActive }: {
         </div>
 
         {/* Category badge */}
-        <div className="absolute top-6 right-6">
-          <Badge className="bg-primary text-white">
-            {event.category}
-          </Badge>
-        </div>
+        {/* Category + Running badges */}
+<div className="absolute top-6 right-6 flex flex-col items-end space-y-2">
+  <Badge className="bg-primary text-white">
+    {event.category}
+  </Badge>
+
+  {event.isRunningNow && (
+    <Badge className="bg-red-600 text-white animate-pulse">
+      🔴 Running Now
+    </Badge>
+  )}
+</div>
       </div>
     </div>
   );
@@ -497,6 +504,11 @@ const EventCard = ({ event, index, onViewDetails }: {
             {event.category}
           </Badge>
         </div>
+        {event.isRunningNow && (
+        <div className="absolute bottom-4 right-4"> <Badge className="bg-red-600 text-white animate-pulse"> 🔴 Running Now
+          </Badge>
+  </div>
+)}
         <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-2xl px-3 py-2 text-center shadow-lg">
           <div className="text-xl font-bold text-primary">
             {new Date(event.date).getDate()}
