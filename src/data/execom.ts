@@ -161,23 +161,24 @@ export const mediaTeamMembers: ExecomMembers = {
       linkedin: "https://www.linkedin.com/in/s-anandhu-prakash-b1b224320?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
-      name: "Eldho Binu ",
-      role: "Media Team Member",
-      image: "execom/eldho.jpg",
-      linkedin: "https://linkedin.com/in/potla-akhil-0b1a5a1b6"
-    },
-    {
       name: "Farsana N S ",
       role: "Media Team Member",
       image: "execom/farsana.jpg",
-      linkedin: "https://linkedin.com/in/potla-akhil-0b1a5a1b6"
+      linkedin: "https://www.linkedin.com/in/farsana-ns-92294a323?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
     },
     {
       name: "Namitha Manoj",
       role: "Media Team Member",
       image: "execom/namitha.jpg",
-      linkedin: "https://linkedin.com/in/potla-akhil-0b1a5a1b6"
+      linkedin: "https://www.linkedin.com/in/namitha-manoj-42936032a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
+    {
+      name: "Titus M Sunil",
+      role: "Media Team Member",
+      image: "execom/titus.jpg",
+      linkedin: "https://www.linkedin.com/in/titus-m-sunil",
+    },
+
 
   ],
   crl: [],
@@ -226,6 +227,12 @@ export const orbitTeamMembers: ExecomMembers = {
   crl: [],
   sl: [
     {
+      name: "Vishnu R Das",
+      role: "Orbit Team Member",
+      image: "execom/vishnu.jpg",
+      linkedin: "https://www.linkedin.com/in/rdvishnu?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
+    {
       name: "Rohana K Ajesh",
       role: "Orbit Team Member",
       image: "execom/rohana.jpg",
@@ -255,5 +262,18 @@ export const orbitTeamMembers: ExecomMembers = {
       image: "execom/sayooj.jpg",
       linkedin: "https://www.linkedin.com/in/sayooj-sunil-kumar-9a5b29323?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
+    {
+      name: "Varsha S Kumar",
+      role: "Orbit Team Member",
+      image: "execom/varsha.jpg",
+      linkedin: "https://www.linkedin.com/in/varsha-s-kumar-563aa5353?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
+    {
+      name: "Akhil S",
+      role: "Orbit Team Member",
+      image: "execom/akhil_s.jpg",
+      linkedin: "https://www.linkedin.com/in/akhil-s-0b1a5a1b6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
+    
   ]
 };
